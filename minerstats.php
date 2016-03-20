@@ -98,6 +98,8 @@ foreach ($zpool_data as $name => $entry) {
         if (!isset($rate[$name])) continue;
         $hashrate = $rate[$name];
         $profitrate = $hashrate * $paying / 1000.;
+        $fees = ($profitrate / 100.) * $entry['fees'];
+        $profitrate -= $fees;
         $profit[$card]["$name.zpool"] = array(
             'name'       => $entry['name'],
             'profitrate' => $profitrate,
@@ -115,6 +117,7 @@ foreach ($nicehash_data as $entry) {
         if (!isset($rate[$name])) continue;
         $hashrate = $rate[$name];
         $profitrate = $hashrate * $paying / 1000.;
+        $fees = ($profitrate / 100.) * 3; // https://www.nicehash.com/?p=faq#faqg2
         $profit[$card]["$name.nicehash"] = array(
             'name'       => $name,
             'profitrate' => $profitrate,
