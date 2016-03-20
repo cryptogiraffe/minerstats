@@ -20,15 +20,15 @@ $gfxcards = array(
     "decred"     => 1310 * 1000,
   ),
   'CPU i7 4770' => array(
-    "lyra2re"        => 714,
+    "lyra2"          => 714,
     "axiom"          =>   0.383,
-    "scryptjanenf16" =>   0.207,
+    "scrypt-jane"    =>   0.207,
     "argon2"         =>  26.10,
   ),
   'CPU X4 965' => array(
-    "lyra2re"        => 397.56,
-    "axiom"          =>   0.059,
-    "scryptjanenf16" =>   0.056,
+    "lyra2"       => 397.56,
+    "axiom"       =>   0.059,
+    "scrypt-jane" =>   0.056,
   ),
   'GPU r270x' => array(
     "x11"       => 6700,
@@ -47,6 +47,16 @@ $memcache->addServer('localhost', 11211);
 
 //print_r($memcache->getVersion());// . "\n";
 
+function get_hashrate($card, $algo) {
+    global $gfxcards;
+    if ($algo == "lyra2re")        $algo = "lyra2";
+    if ($algo == "lyra2rev2")      $algo = "lyra2v2";
+    if ($algo == "scryptjanenf16") $algo = "scrypt-jane";
+    if ($algo == "blake256r8")     $algo = "blakecoin";
+    if ($algo == "blake256r14")    $algo = "blake";
+    if ($algo == "blake256r8vnl")  $algo = "vanilla";
+    return $gfxcards[$card][$algo];
+}
 
 $zpool_data = $memcache->get("zpool_data");
 if ($zpool_data) {
@@ -95,8 +105,8 @@ $profit = array();
 foreach ($zpool_data as $name => $entry) {
     $paying = $entry['actual_last24h'];
     foreach ($gfxcards as $card => $rate) {
-        if (!isset($rate[$name])) continue;
-        $hashrate = $rate[$name];
+        $hashrate = get_hashrate($card, $name);
+        if (!isset($hashrate)) continue;
         $profitrate = $hashrate * $paying / 1000.;
         $fees = ($profitrate / 100.) * $entry['fees'];
         $profitrate -= $fees;
@@ -114,8 +124,8 @@ foreach ($nicehash_data as $entry) {
     $paying = $entry['paying'];
     $name = $entry['name'];
     foreach ($gfxcards as $card => $rate) {
-        if (!isset($rate[$name])) continue;
-        $hashrate = $rate[$name];
+        $hashrate = get_hashrate($card, $name);
+        if (!isset($hashrate)) continue;
         $profitrate = $hashrate * $paying / 1000.;
         $fees = ($profitrate / 100.) * 3; // https://www.nicehash.com/?p=faq#faqg2
         $profit[$card]["$name.nicehash"] = array(
