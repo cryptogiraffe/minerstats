@@ -176,7 +176,7 @@ foreach ($profit as $card => $entries) {
         $usdrate = ($profitrate/1000.) * $usd_data['last'];
         $name = $entry['name'];
         $hashrate = $gfxcards[$card][$name];
-        printf("%14s @ %8s -- %5.2f mBTC/day, %.2f USD/day. (%7.2f mHs * %8.3f)\n", $entry['name'], $entry['pool'], $profitrate, $usdrate, $hashrate / 1000., $entry['paying']);
+        printf("%14s @ %9s -- %5.2f mBTC/day, %.2f USD/day. (%7.2f mHs * %8.3f)\n", $entry['name'], $entry['pool'], $profitrate, $usdrate, $hashrate / 1000., $entry['paying']);
     }
 }
 
