@@ -3,34 +3,65 @@ echo "<pre>";
 
 // in kH/s
 $gfxcards = array(
-  'GPU gtx970' => array(
-    "x11"        => 8045,
-    "x13"        => 6224,
-    "keccak"     =>  387.65 * 1000,
-    "x15"        => 5399,
-    "nist5"      =>   28.68 * 1000,
-    "neoscrypt"  =>  621,
-    "whirlpoolx" =>  194.71 * 1000,
-    "qubit"      =>   12.39 * 1000,
-    "quark"      =>   17.12 * 1000,
-    "lyra2v2"    => 9742,
-    "lyra2rev2"  => 9742,
-    // not in nicehash UI
-    "scrypt"     =>  524,
-    "decred"     => 1310 * 1000,
+  'GPU GTX970' => array(
+    "neoscrypt"   =>  600,           // ccminer_neoscrypt
+    "quark"       =>   17.20 * 1000, // ccminer_sphash
+    "x13"         => 6400,           // ccminer_neoscrypt
+    "decred"      => 1320.04 * 1000, // ccminer_oxen
+    "qubit"       =>   12.42 * 1000, // ccminer_sphash
+    "x15"         => 5500,           // ccminer_neoscrypt
+    "x11"         => 8100,           // ccminer_sphash
+    "nist5"       =>   27.70 * 1000, // ccminer_neoscrypt
+    "whirlpoolx"  =>  197.80 * 1000, // ccminer_neoscrypt
+    "lyra2"       =>  1850,          // ccminer_neoscrypt
+    "scrypt-jane" =>    0.424,       // ccminer_oxen
+    "lyra2v2"     => 9750,           // ccminer_sphash
+    "scrypt"      =>  520.50,        // ccminer_tpruvot
+    "keccak"      =>  394.50 * 1000, // ccminer_sp
+    "sha256"      =>  575.50 * 1000, // ccminer_neoscrypt
+    "groestl"     =>   22.36 * 1000, // ccminer_neoscrypt
+    "blake2s"     =>  969.74 * 1000, // ccminer_oxen
+    "ethereum"    =>   18.83 * 1000, // ethminer-0.9.41-genoil-1.0.5
+  ),
+  'GPU GTX970 OC' => array(
+    "neoscrypt"   =>  677.54,        // ccminer_neoscrypt
+    "decred"      => 1495.36 * 1000, // ccminer_oxen
+    "quark"       =>   18.88 * 1000, // ccminer_sphash
+    "qubit"       =>   13.64 * 1000, // ccminer_sphash
+    "x11"         => 8946.79,        // ccminer_sphash
+    "x13"         => 7171.85,        // ccminer_neoscrypt
+    "x15"         => 6164.13,        // ccminer_neoscrypt
   ),
   'CPU i7 4770' => array(
-    "lyra2"          => 714,
-    "axiom"          =>   0.383,
-    "scrypt-jane"    =>   0.207,
-    "argon2"         =>  26.10,
+    "scrypt"      =>  93.50,
+    "sha256"      =>  50.84 * 1000,
+    "axiom"       =>   0.386,
+    "keccak"      =>   7.04 * 1000,
+    "lyra2"       => 716.50,
+    "lyra2v2"     => 434.69,
+    "quark"       => 500.74,
+    "qubit"       => 402.75,
+    "x11"         => 251.91,
+    "x13"         => 164.99,
+    "x14"         => 159.72,
+    "x15"         => 152.57,
+    "scrypt-jane" =>   0.210,
+    "yescrypt"    =>   1.61,
+    "blake"       =>  12.63 * 1000,
+    "blakecoin"   =>  19.09 * 1000,
+    "vanilla"     =>  19.10 * 1000,
+    "decred"      =>  13.00 * 1000,
+    "argon2"      =>  26.67,
+    "neoscrypt"   =>  16.01,
+    "nist5"       => 794.71,
+    "ethereum"    => 556.79,
   ),
   'CPU X4 965' => array(
     "lyra2"       => 397.56,
     "axiom"       =>   0.059,
     "scrypt-jane" =>   0.056,
   ),
-  'GPU r270x' => array(
+  'GPU R270X' => array(
     "x11"       => 6700,
     "x13"       => 2900,
     "keccak"    =>  241.5 * 1000,
