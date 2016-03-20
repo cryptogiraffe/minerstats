@@ -69,6 +69,17 @@ if ($zpool_data) {
     if ($zpool_data) $memcache->set("zpool_data", $zpool_data, 60);
 }
 
+$hashpower_data = $memcache->get("hashpower_data");
+if ($hashpower_data) {
+    print "Grabbed hashpower payrates from memcache\n";
+} else {
+    $hashpower_url = "http://hashpower.co/api/status";
+    print "Grabbing hashpower payrates from $hashpower_url\n";
+    $hashpower_json = file_get_contents($hashpower_url);
+    $hashpower_data = json_decode($hashpower_json, TRUE);
+    if ($hashpower_data) $memcache->set("hashpower_data", $hashpower_data, 60);
+}
+
 $nicehash_data = $memcache->get("nicehash_data");
 if ($nicehash_data) {
     print "Grabbed nicehash payrates from memcache\n";
@@ -119,6 +130,26 @@ foreach ($zpool_data as $name => $entry) {
     }
 }
 
+// handle hashpower
+foreach ($hashpower_data as $name => $entry) {
+    $paying = $entry['actual_last24h'];
+    foreach ($gfxcards as $card => $rate) {
+        $hashrate = get_hashrate($card, $name);
+        if (!isset($hashrate)) continue;
+        $profitrate = $hashrate * $paying;
+        $fees = ($profitrate / 100.) * $entry['fees'];
+        $profitrate -= $fees;
+        $fee_btc = ($profitrate / 100.) * 2;
+        $profitrate -= $fee_btc; // for withdrawing into BTC
+        $profit[$card]["$name.hashpower"] = array(
+            'name'       => $entry['name'],
+            'profitrate' => $profitrate,
+            'pool'       => 'hashpower',
+            'paying'     => $paying,
+        );
+    }
+}
+
 // handle nicehash
 foreach ($nicehash_data as $entry) {
     $paying = $entry['paying'];
@@ -160,7 +191,9 @@ foreach ($profit as $card => $entries) {
 }
 
 print_r($zpool_data);
-print_r($nicehash_data);
-print_r($usd_data);
+//print_r($nicehash_data);
+print_r($hashpower_data);
+//print_r($usd_data);
+
 echo "</pre>";
 
