@@ -45,8 +45,6 @@ $gfxcards = array(
 $memcache = new Memcached;
 $memcache->addServer('localhost', 11211);
 
-//print_r($memcache->getVersion());// . "\n";
-
 function get_hashrate($card, $algo) {
     global $gfxcards;
     if ($algo == "lyra2re")        $algo = "lyra2";
@@ -102,14 +100,6 @@ if ($usd_data) {
     if ($usd_data) $memcache->set("usd_data", $usd_data, 10);
 }
 
-
-
-$aliases = array(
-   "blake256r8"    => "blakecoin", // ccminer_sp --algo=blakecoin
-   "blake256r14"   => "blake",     // ccminer_sp --algo=blake
-   "blake256r8vnl" => "vanilla",   // ccminer_sp --algo=vanilla
-);
-//$hashrates['lyra2rev2'] = $hashrates['lyra2v2'];
 $profit = array();
 
 // handle zpool
