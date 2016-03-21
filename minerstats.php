@@ -126,51 +126,26 @@ function get_hashrate($card, $algo) {
     return $gfxcards[$card][$algo];
 }
 
+function url_to_array_cached($url, $id) {
+    global $memcache;
+    $data = $memcache->get($id);
+    if ($data) {
+        print "Grabbed $id from memcache\n";
+        return $data;
+    }
+    print "Grabbing $id from $url\n";
+    $json = file_get_contents($url);
+    $data = json_decode($json, TRUE);
+    if ($data) $memcache->set($id, $data, 60);
+    return $data;
+}
+
 echo "<!--\n";
 
-$zpool_data = $memcache->get("zpool_data");
-if ($zpool_data) {
-    print "Grabbed zpool payrates from memcache\n";
-} else {
-    $zpool_url = "http://www.zpool.ca/api/status";
-    print "Grabbing zpool payrates from $zpool_url\n";
-    $zpool_json = file_get_contents($zpool_url);
-    $zpool_data = json_decode($zpool_json, TRUE);
-    if ($zpool_data) $memcache->set("zpool_data", $zpool_data, 60);
-}
-
-$hashpower_data = $memcache->get("hashpower_data");
-if ($hashpower_data) {
-    print "Grabbed hashpower payrates from memcache\n";
-} else {
-    $hashpower_url = "http://hashpower.co/api/status";
-    print "Grabbing hashpower payrates from $hashpower_url\n";
-    $hashpower_json = file_get_contents($hashpower_url);
-    $hashpower_data = json_decode($hashpower_json, TRUE);
-    if ($hashpower_data) $memcache->set("hashpower_data", $hashpower_data, 60);
-}
-
-$nicehash_data = $memcache->get("nicehash_data");
-if ($nicehash_data) {
-    print "Grabbed nicehash payrates from memcache\n";
-} else {
-    $nicehash_url = "https://www.nicehash.com/api?method=simplemultialgo.info";
-    print "Grabbing nicehash payrates from $nicehash_url\n";
-    $nicehash_json = file_get_contents($nicehash_url);
-    $nicehash_data = json_decode($nicehash_json, TRUE)['result']['simplemultialgo'];
-    if ($nicehash_data) $memcache->set("nicehash_data", $nicehash_data, 60);
-}
-
-$usd_data = $memcache->get("usd_data");
-if ($usd_data) {
-    print "Grabbed USD exchange rate from memcache\n";
-} else {
-    $usd_url = "https://api.bitcoinaverage.com/ticker/global/USD/";
-    print "Grabbing USD exchange rate from $usd_url\n";
-    $usd_json = file_get_contents($usd_url);
-    $usd_data = json_decode($usd_json, TRUE);
-    if ($usd_data) $memcache->set("usd_data", $usd_data, 60);
-}
+$zpool_data     = url_to_array_cached("http://www.zpool.ca/api/status", "zpool_data");
+$hashpower_data = url_to_array_cached("http://hashpower.co/api/status", "hashpower_data");
+$nicehash_data  = url_to_array_cached("https://www.nicehash.com/api?method=simplemultialgo.info", "nicehash_data");
+$usd_data       = url_to_array_cached("https://api.bitcoinaverage.com/ticker/global/USD/", "usd_data");
 echo "-->";
 
 $profit = array();
@@ -212,7 +187,7 @@ foreach ($hashpower_data as $algo => $entry) {
 }
 
 // handle nicehash
-foreach ($nicehash_data as $entry) {
+foreach ($nicehash_data['result']['simplemultialgo'] as $entry) {
     $paying = $entry['paying'];
     $algo = $entry['name'];
     foreach ($gfxcards as $card => $rate) {
