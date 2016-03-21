@@ -1,5 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
 <?php
-echo "<pre>";
 
 // in kH/s
 $gfxcards = array(
@@ -53,7 +65,7 @@ $gfxcards = array(
   /********
    * CPU's
    ********/
-  'i7 4770' => array(
+  'i7 4770 CPU' => array(
     "scrypt"      =>  93.50,
     "sha256"      =>  50.84 * 1000,
     "axiom"       =>   0.386,
@@ -77,12 +89,12 @@ $gfxcards = array(
     "nist5"       => 794.71,
     "ethereum"    => 556.79,
   ),
-  'i7 6700' => array(
+  'i7 6700 CPU' => array(
     "axiom"       =>   0.399,
     "lyra2"       => 762.590,
     "scrypt-jane" =>   0.299,
   ),
-  'X4 965' => array(
+  'X4 965 CPU' => array(
     "lyra2"       => 397.56,
     "axiom"       =>   0.059,
     "scrypt-jane" =>   0.056,
@@ -109,6 +121,8 @@ function get_hashrate($card, $algo) {
     if (!isset($gfxcards[$card][$algo])) return;
     return $gfxcards[$card][$algo];
 }
+
+echo "<!--\n";
 
 $zpool_data = $memcache->get("zpool_data");
 if ($zpool_data) {
@@ -153,6 +167,7 @@ if ($usd_data) {
     $usd_data = json_decode($usd_json, TRUE);
     if ($usd_data) $memcache->set("usd_data", $usd_data, 10);
 }
+echo "-->";
 
 $profit = array();
 
@@ -217,25 +232,45 @@ function profitrate_cmp($a, $b) {
     return ($left > $right) ? -1 : 1;
 }
 
+// sort by card/CPU name
 ksort($profit);
 
+// output
 foreach ($profit as $card => $entries) {
-    print "$card:\n";
     uasort($entries, 'profitrate_cmp');
+
+    $card_html = htmlspecialchars($card, ENT_HTML5);
+    $card_html = str_replace("CPU", '<span class="label label-default">CPU</span>', $card_html);
+    $card_html = str_replace("GPU", '<span class="label label-default">GPU</span>', $card_html);
+
+    print "<div class='page-header'><h3>$card_html</h3></div>";
+    print '<table class="table table-striped table-hover table-condensed">';
+    print '<thead><tr><th>Algorithm</th><th>pool</th><th>mBTC/day</th><th>USD/day</th><th>hashrate</th></thead>';
+    print '<tbody>';
     foreach ($entries as $entry) {
         $profitrate = $entry['profitrate'];
         if (!$profitrate) continue;
         $usdrate = ($profitrate/1000.) * $usd_data['last'];
         $algo = fix_hashname($entry['algo']);
         $hashrate = $gfxcards[$card][$algo];
-        printf("%14s @ %9s -- %5.2f mBTC/day, %.2f USD/day. (%7.2f mHs * %8.3f)\n", $algo, $entry['pool'], $profitrate, $usdrate, $hashrate / 1000., $entry['paying']);
+        printf('<tr><td>%s</td><td>%s</td><td>%.2f</td><td>%.2f</td><td>%.3f MH/s</td></tr>', $algo, $entry['pool'], $profitrate, $usdrate, $hashrate/1000);
     }
+
+    print '</tbody>';
+    print "</table>";
+
 }
 
+echo "<!--\n";
 print_r($zpool_data);
 //print_r($nicehash_data);
 print_r($hashpower_data);
 //print_r($usd_data);
-
-echo "</pre>";
-
+echo "-->";
+?>
+</div>
+<!-- jQuery first, then Bootstrap JS. -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+</body>
+</html>
