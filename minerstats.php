@@ -8,6 +8,10 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- jQuery first, then Bootstrap JS. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
   </head>
   <body>
     <div class="container">
@@ -235,15 +239,36 @@ function profitrate_cmp($a, $b) {
 // sort by card/CPU name
 ksort($profit);
 
-// output
-foreach ($profit as $card => $entries) {
-    uasort($entries, 'profitrate_cmp');
+function card_to_anchor($card) {
+    $anchor = str_replace(' ', '', $card);
+    return htmlentities($anchor);
+}
 
+function say_active(&$said_active) {
+    if ($said_active) return "";
+    $said_active = 1;
+    return "active";
+}
+
+// output nav tabs
+$said_active = 0;
+print '<ul class="nav nav-pills" id="cardlist" role="tablist">';
+foreach ($profit as $card => $entries) {
+    print '<a class="nav-item nav-link ' . say_active($said_active) . '" data-toggle="tab" href="#' . card_to_anchor($card) . '">';
     $card_html = htmlspecialchars($card, ENT_HTML5);
     $card_html = str_replace("CPU", '<span class="label label-default">CPU</span>', $card_html);
     $card_html = str_replace("GPU", '<span class="label label-default">GPU</span>', $card_html);
+    print "$card_html";
+    print "</a>";
+}
+print "</ul>";
 
-    print "<div class='page-header'><h3>$card_html</h3></div>";
+// output tab contents
+$said_active = 0;
+print "<div class='tab-content'>";
+foreach ($profit as $card => $entries) {
+    uasort($entries, 'profitrate_cmp');
+    print "<div class='tab-pane " . say_active($said_active) . "' id='" . card_to_anchor($card) . "'>";
     print '<table class="table table-striped table-hover table-condensed">';
     print '<thead><tr><th>Algorithm</th><th>pool</th><th>mBTC/day</th><th>USD/day</th><th class="text-xs-right">hashrate</th></thead>';
     print '<tbody>';
@@ -258,8 +283,10 @@ foreach ($profit as $card => $entries) {
 
     print '</tbody>';
     print "</table>";
+    print "</div>";
 
 }
+print '</div>';
 
 echo "<!--\n";
 print_r($zpool_data);
@@ -269,8 +296,15 @@ print_r($hashpower_data);
 echo "-->";
 ?>
 </div>
-<!-- jQuery first, then Bootstrap JS. -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+
+<script>
+$(function () {
+    $('#cardlist a[href="' + window.location.hash + '"]').tab('show')
+})
+$('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+    window.location.hash = e.target.hash;
+})
+</script>
+
 </body>
 </html>
