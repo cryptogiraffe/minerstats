@@ -245,7 +245,7 @@ foreach ($profit as $card => $entries) {
 
     print "<div class='page-header'><h3>$card_html</h3></div>";
     print '<table class="table table-striped table-hover table-condensed">';
-    print '<thead><tr><th>Algorithm</th><th>pool</th><th>mBTC/day</th><th>USD/day</th><th>hashrate</th></thead>';
+    print '<thead><tr><th>Algorithm</th><th>pool</th><th>mBTC/day</th><th>USD/day</th><th class="text-xs-right">hashrate</th></thead>';
     print '<tbody>';
     foreach ($entries as $entry) {
         $profitrate = $entry['profitrate'];
@@ -253,7 +253,7 @@ foreach ($profit as $card => $entries) {
         $usdrate = ($profitrate/1000.) * $usd_data['last'];
         $algo = fix_hashname($entry['algo']);
         $hashrate = $gfxcards[$card][$algo];
-        printf('<tr><td>%s</td><td>%s</td><td>%.2f</td><td>%.2f</td><td>%.3f MH/s</td></tr>', $algo, $entry['pool'], $profitrate, $usdrate, $hashrate/1000);
+        printf('<tr><td>%s</td><td>%s</td><td>%.2f</td><td>%.2f</td><td class="text-xs-right">%.3f MH/s</td></tr>', $algo, $entry['pool'], $profitrate, $usdrate, $hashrate/1000);
     }
 
     print '</tbody>';
