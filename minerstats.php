@@ -92,14 +92,21 @@ $gfxcards = array(
 $memcache = new Memcached;
 $memcache->addServer('localhost', 11211);
 
-function get_hashrate($card, $algo) {
-    global $gfxcards;
+function fix_hashname($algo) {
     if ($algo == "lyra2re")        $algo = "lyra2";
     if ($algo == "lyra2rev2")      $algo = "lyra2v2";
     if ($algo == "scryptjanenf16") $algo = "scrypt-jane";
     if ($algo == "blake256r8")     $algo = "blakecoin";
     if ($algo == "blake256r14")    $algo = "blake";
     if ($algo == "blake256r8vnl")  $algo = "vanilla";
+    return $algo;
+}
+
+function get_hashrate($card, $algo) {
+    global $gfxcards;
+    $algo = fix_hashname($algo);
+    if (!isset($gfxcards[$card])) return;
+    if (!isset($gfxcards[$card][$algo])) return;
     return $gfxcards[$card][$algo];
 }
 
@@ -150,16 +157,16 @@ if ($usd_data) {
 $profit = array();
 
 // handle zpool
-foreach ($zpool_data as $name => $entry) {
+foreach ($zpool_data as $algo => $entry) {
     $paying = $entry['actual_last24h'];
     foreach ($gfxcards as $card => $rate) {
-        $hashrate = get_hashrate($card, $name);
+        $hashrate = get_hashrate($card, $algo);
         if (!isset($hashrate)) continue;
         $profitrate = $hashrate * $paying / 1000.;
         $fees = ($profitrate / 100.) * $entry['fees'];
         $profitrate -= $fees;
-        $profit[$card]["$name.zpool"] = array(
-            'name'       => $entry['name'],
+        $profit[$card]["$algo.zpool"] = array(
+            'algo'       => $entry['name'],
             'profitrate' => $profitrate,
             'pool'       => 'zpool',
             'paying'     => $paying,
@@ -168,18 +175,18 @@ foreach ($zpool_data as $name => $entry) {
 }
 
 // handle hashpower
-foreach ($hashpower_data as $name => $entry) {
+foreach ($hashpower_data as $algo => $entry) {
     $paying = $entry['actual_last24h'];
     foreach ($gfxcards as $card => $rate) {
-        $hashrate = get_hashrate($card, $name);
+        $hashrate = get_hashrate($card, $algo);
         if (!isset($hashrate)) continue;
         $profitrate = $hashrate * $paying;
         $fees = ($profitrate / 100.) * $entry['fees'];
         $profitrate -= $fees;
         $fee_btc = ($profitrate / 100.) * 2;
         $profitrate -= $fee_btc; // for withdrawing into BTC
-        $profit[$card]["$name.hashpower"] = array(
-            'name'       => $entry['name'],
+        $profit[$card]["$algo.hashpower"] = array(
+            'algo'       => $entry['name'],
             'profitrate' => $profitrate,
             'pool'       => 'hashpower',
             'paying'     => $paying,
@@ -190,14 +197,14 @@ foreach ($hashpower_data as $name => $entry) {
 // handle nicehash
 foreach ($nicehash_data as $entry) {
     $paying = $entry['paying'];
-    $name = $entry['name'];
+    $algo = $entry['name'];
     foreach ($gfxcards as $card => $rate) {
-        $hashrate = get_hashrate($card, $name);
+        $hashrate = get_hashrate($card, $algo);
         if (!isset($hashrate)) continue;
         $profitrate = $hashrate * $paying / 1000.;
         $fees = ($profitrate / 100.) * 3; // https://www.nicehash.com/?p=faq#faqg2
-        $profit[$card]["$name.nicehash"] = array(
-            'name'       => $name,
+        $profit[$card]["$algo.nicehash"] = array(
+            'algo'       => $algo,
             'profitrate' => $profitrate,
             'pool'       => 'nicehash',
             'paying'     => $paying,
@@ -221,9 +228,9 @@ foreach ($profit as $card => $entries) {
         $profitrate = $entry['profitrate'];
         if (!$profitrate) continue;
         $usdrate = ($profitrate/1000.) * $usd_data['last'];
-        $name = $entry['name'];
-        $hashrate = $gfxcards[$card][$name];
-        printf("%14s @ %9s -- %5.2f mBTC/day, %.2f USD/day. (%7.2f mHs * %8.3f)\n", $entry['name'], $entry['pool'], $profitrate, $usdrate, $hashrate / 1000., $entry['paying']);
+        $algo = fix_hashname($entry['algo']);
+        $hashrate = $gfxcards[$card][$algo];
+        printf("%14s @ %9s -- %5.2f mBTC/day, %.2f USD/day. (%7.2f mHs * %8.3f)\n", $algo, $entry['pool'], $profitrate, $usdrate, $hashrate / 1000., $entry['paying']);
     }
 }
 
