@@ -54,6 +54,7 @@ $gfxcards = array(
     "quark"       =>  527.30, // ccminer_oxen
     "x11"         => 1280.00, // ccminer_oxen
     "x13"         => 1091.16, // ccminer_oxen
+    "x15"         =>  987.65, // ccminer_oxen
   ),
   'GPU R270X' => array(
     "keccak"    =>  233.1 * 1000,
