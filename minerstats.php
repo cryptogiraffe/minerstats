@@ -204,6 +204,7 @@ foreach ($nicehash_data['result']['simplemultialgo'] as $entry) {
         if (!isset($hashrate)) continue;
         $profitrate = $hashrate * $paying / 1000.;
         $fees = ($profitrate / 100.) * 3; // https://www.nicehash.com/?p=faq#faqg2
+        $profitrate -= $fees;
         $profit[$card]["$algo.nicehash"] = array(
             'algo'       => $algo,
             'profitrate' => $profitrate,
