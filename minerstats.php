@@ -181,10 +181,8 @@ foreach ($hashpower_data as $algo => $entry) {
         $hashrate = get_hashrate($card, $algo);
         if (!isset($hashrate)) continue;
         $profitrate = $hashrate * $paying;
-        $fees = ($profitrate / 100.) * $entry['fees'];
+        $fees = ($profitrate / 100.) * ($entry['fees']+2); // +2% for withdrawing into BTC
         $profitrate -= $fees;
-        $fee_btc = ($profitrate / 100.) * 2;
-        $profitrate -= $fee_btc; // for withdrawing into BTC
         $profit[$card]["$algo.hashpower"] = array(
             'algo'       => $entry['name'],
             'profitrate' => $profitrate,
