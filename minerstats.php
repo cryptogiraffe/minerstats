@@ -304,14 +304,27 @@ foreach ($profit as $card => $entries) {
 }
 print "</ul>";
 
+function print_td($text, $extraclass='') {print "<td class='$extraclass'>$text</td>\n";}
+function print_td_right($text, $extraclass='') {print "<td class='text-xs-right $extraclass'>$text</td>\n";}
+function print_th($text, $extraclass='') {print "<th class='$extraclass'>$text</th>\n";}
+function print_th_right($text, $extraclass='') {print "<th class='text-xs-right $extraclass'>$text</th>\n";}
+
+
 // output tab contents
 $said_active = 0;
 print "<div class='tab-content small'>";
 foreach ($profit as $card => $entries) {
     uasort($entries, 'profitrate_cmp');
     print "<div class='tab-pane " . say_active($said_active) . "' id='" . card_to_anchor($card) . "'>";
-    print '<table class="table table-striped table-hover table-condensed">';
-    print '<thead><tr><th>Algorithm</th><th>pool</th><th>mBTC/day</th><th>USD/day</th><th class="text-xs-right">hashrate</th></thead>';
+    print '<table class="table table-striped table-hover table-condensed table-sm">';
+    print '<thead><tr>';
+    print_th_right("Algorithm");
+    print_th("pool");
+    print_th_right("mBTC/day", 'hidden-xs-down');
+    print_th("USD/day");
+    print_th_right('mBTC/MH/day', 'hidden-xs-down');
+    print_th_right("hashrate");
+    print '</tr></thead>';
     print '<tbody>';
     foreach ($entries as $entry) {
         $profitrate = $entry['profitrate'];
@@ -319,7 +332,15 @@ foreach ($profit as $card => $entries) {
         $usdrate = ($profitrate/1000.) * $usd_data['vwap'];
         $algo = fix_hashname($entry['algo']);
         $hashrate = $gfxcards[$card][$algo];
-        printf('<tr><td>%s</td><td>%s</td><td>%.2f</td><td>$%.2f</td><td class="text-xs-right">%.3f MH/s</td></tr>', $algo, $entry['pool'], $profitrate, $usdrate, $hashrate/1000);
+        $paying = $entry['paying'];
+        print '<tr>';
+        print_td_right($algo);
+        print_td($entry['pool']);
+        print_td_right(sprintf('%.2f', $profitrate), 'hidden-xs-down');
+        print_td(sprintf('$%.2f', $usdrate));
+        print_td_right(sprintf('%.4f', $paying), 'hidden-xs-down');
+        print_td_right(sprintf('%.2f MH', $hashrate/1000));
+        print '</tr>';
     }
 
     print '</tbody>';
