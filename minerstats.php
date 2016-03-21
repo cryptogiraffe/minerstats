@@ -293,7 +293,7 @@ function say_active(&$said_active) {
 
 // output nav tabs
 $said_active = 0;
-print '<ul class="nav nav-pills" id="cardlist" role="tablist">';
+print '<ul class="nav nav-pills small" id="cardlist" role="tablist">';
 foreach ($profit as $card => $entries) {
     print '<a class="nav-item nav-link ' . say_active($said_active) . '" data-toggle="tab" href="#' . card_to_anchor($card) . '">';
     $card_html = htmlspecialchars($card, ENT_HTML5);
@@ -306,7 +306,7 @@ print "</ul>";
 
 // output tab contents
 $said_active = 0;
-print "<div class='tab-content'>";
+print "<div class='tab-content small'>";
 foreach ($profit as $card => $entries) {
     uasort($entries, 'profitrate_cmp');
     print "<div class='tab-pane " . say_active($said_active) . "' id='" . card_to_anchor($card) . "'>";
