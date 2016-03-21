@@ -253,7 +253,7 @@ foreach ($profit as $card => $entries) {
         $usdrate = ($profitrate/1000.) * $usd_data['vwap'];
         $algo = fix_hashname($entry['algo']);
         $hashrate = $gfxcards[$card][$algo];
-        printf('<tr><td>%s</td><td>%s</td><td>%.2f</td><td>%.2f</td><td class="text-xs-right">%.3f MH/s</td></tr>', $algo, $entry['pool'], $profitrate, $usdrate, $hashrate/1000);
+        printf('<tr><td>%s</td><td>%s</td><td>%.2f</td><td>$%.2f</td><td class="text-xs-right">%.3f MH/s</td></tr>', $algo, $entry['pool'], $profitrate, $usdrate, $hashrate/1000);
     }
 
     print '</tbody>';
