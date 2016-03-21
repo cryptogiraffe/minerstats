@@ -32,7 +32,28 @@ $gfxcards = array(
     "x13"         => 7171.85,        // ccminer_neoscrypt
     "x15"         => 6164.13,        // ccminer_neoscrypt
   ),
-  'CPU i7 4770' => array(
+  'GPU GTX570' => array(
+    "quark"       =>  527.30, // ccminer_oxen
+    "x11"         => 1280.00, // ccminer_oxen
+    "x13"         => 1091.16, // ccminer_oxen
+  ),
+  'GPU R270X' => array(
+    "keccak"    =>  233.1 * 1000,
+    "lyra2v2"   =>  414,
+    "neoscrypt" =>  268,
+    "nist5"     => 5200,
+    "quark"     => 7100,
+    "qubit"     => 7900,
+    "vanilla"   => 1437.00 * 1000,
+    "x11"       => 6900,
+    "x13"       => 3000,
+    "x15"       => 1400,
+  ),
+
+  /********
+   * CPU's
+   ********/
+  'i7 4770' => array(
     "scrypt"      =>  93.50,
     "sha256"      =>  50.84 * 1000,
     "axiom"       =>   0.386,
@@ -56,20 +77,15 @@ $gfxcards = array(
     "nist5"       => 794.71,
     "ethereum"    => 556.79,
   ),
-  'CPU X4 965' => array(
+  'i7 6700' => array(
+    "axiom"       =>   0.399,
+    "lyra2"       => 762.590,
+    "scrypt-jane" =>   0.299,
+  ),
+  'X4 965' => array(
     "lyra2"       => 397.56,
     "axiom"       =>   0.059,
     "scrypt-jane" =>   0.056,
-  ),
-  'GPU R270X' => array(
-    "x11"       => 6700,
-    "x13"       => 2900,
-    "keccak"    =>  241.5 * 1000,
-    "x15"       => 1400,
-    "nist5"     => 4800,
-    "neoscrypt" =>  272,
-    "qubit"     => 7900,
-    "quark"     => 7200,
   ),
 );
 
