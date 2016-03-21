@@ -145,7 +145,7 @@ echo "<!--\n";
 $zpool_data     = url_to_array_cached("http://www.zpool.ca/api/status", "zpool_data");
 $hashpower_data = url_to_array_cached("http://hashpower.co/api/status", "hashpower_data");
 $nicehash_data  = url_to_array_cached("https://www.nicehash.com/api?method=simplemultialgo.info", "nicehash_data");
-$usd_data       = url_to_array_cached("https://api.bitcoinaverage.com/ticker/global/USD/", "usd_data");
+$usd_data       = url_to_array_cached("https://www.bitstamp.net/api/ticker/", "usd_data");
 echo "-->";
 
 $profit = array();
@@ -250,7 +250,7 @@ foreach ($profit as $card => $entries) {
     foreach ($entries as $entry) {
         $profitrate = $entry['profitrate'];
         if (!$profitrate) continue;
-        $usdrate = ($profitrate/1000.) * $usd_data['last'];
+        $usdrate = ($profitrate/1000.) * $usd_data['vwap'];
         $algo = fix_hashname($entry['algo']);
         $hashrate = $gfxcards[$card][$algo];
         printf('<tr><td>%s</td><td>%s</td><td>%.2f</td><td>%.2f</td><td class="text-xs-right">%.3f MH/s</td></tr>', $algo, $entry['pool'], $profitrate, $usdrate, $hashrate/1000);
