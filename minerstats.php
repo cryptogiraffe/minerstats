@@ -126,17 +126,23 @@ function get_hashrate($card, $algo) {
     return $gfxcards[$card][$algo];
 }
 
-function url_to_array_cached($url, $id) {
+function url_cached($url, $id) {
     global $memcache;
     $data = $memcache->get($id);
     if ($data) {
         print "Grabbed $id from memcache\n";
         return $data;
     }
+
     print "Grabbing $id from $url\n";
-    $json = file_get_contents($url);
-    $data = json_decode($json, TRUE);
+    $data = file_get_contents($url);
     if ($data) $memcache->set($id, $data, 60);
+    return $data;
+}
+
+function url_to_array_cached($url, $id) {
+    $json = url_cached($url, $id);
+    $data = json_decode($json, TRUE);
     return $data;
 }
 
@@ -146,6 +152,9 @@ $zpool_data     = url_to_array_cached("http://www.zpool.ca/api/status", "zpool_d
 $hashpower_data = url_to_array_cached("http://hashpower.co/api/status", "hashpower_data");
 $nicehash_data  = url_to_array_cached("https://www.nicehash.com/api?method=simplemultialgo.info", "nicehash_data");
 $usd_data       = url_to_array_cached("https://www.bitstamp.net/api/ticker/", "usd_data");
+$dashminer_data = url_to_array_cached("http://dashminer.com/payouts.json", "dashminer_data");
+$wepaybtc_data  = url_to_array_cached("http://wepaybtc.com/payouts.json", "wepaybtc_data");
+$themultipool_x11 = url_cached("http://themultipool.com/static/x11_profit.txt", "themultipool_x11");
 echo "-->";
 
 $profit = array();
@@ -160,7 +169,7 @@ foreach ($zpool_data as $algo => $entry) {
         $fees = ($profitrate / 100.) * $entry['fees'];
         $profitrate -= $fees;
         $profit[$card]["$algo.zpool"] = array(
-            'algo'       => $entry['name'],
+            'algo'       => $algo,
             'profitrate' => $profitrate,
             'pool'       => 'zpool',
             'paying'     => $paying,
@@ -178,7 +187,7 @@ foreach ($hashpower_data as $algo => $entry) {
         $fees = ($profitrate / 100.) * ($entry['fees']+2); // +2% for withdrawing into BTC
         $profitrate -= $fees;
         $profit[$card]["$algo.hashpower"] = array(
-            'algo'       => $entry['name'],
+            'algo'       => $algo,
             'profitrate' => $profitrate,
             'pool'       => 'hashpower',
             'paying'     => $paying,
@@ -199,6 +208,59 @@ foreach ($nicehash_data['result']['simplemultialgo'] as $entry) {
             'algo'       => $algo,
             'profitrate' => $profitrate,
             'pool'       => 'nicehash',
+            'paying'     => $paying,
+        );
+    }
+}
+
+// handle wepaybtc
+foreach ($wepaybtc_data as $algo => $entry) {
+    $paying = $entry;
+    foreach ($gfxcards as $card => $rate) {
+        $hashrate = get_hashrate($card, $algo);
+        if (!isset($hashrate)) continue;
+        $profitrate = $hashrate * $paying;
+        $profit[$card]["$algo.wepaybtc"] = array(
+            'algo'       => $algo,
+            'profitrate' => $profitrate,
+            'pool'       => 'wepaybtc',
+            'paying'     => $paying,
+        );
+    }
+}
+
+
+// handle dashminer
+{
+    $paying = $dashminer_data['btcpermhs'];
+    $algo = "x11";
+    foreach ($gfxcards as $card => $rate) {
+        $hashrate = get_hashrate($card, $algo);
+        if (!isset($hashrate)) continue;
+        $profitrate = $hashrate * $paying;
+        $profit[$card]["$algo.dashminer"] = array(
+            'algo'       => $algo,
+            'profitrate' => $profitrate,
+            'pool'       => 'dashminer',
+            'paying'     => $paying,
+        );
+    }
+}
+
+// handle themultipool
+{
+    $paying = floatval($themultipool_x11);
+    $algo = "x11";
+    foreach ($gfxcards as $card => $rate) {
+        $hashrate = get_hashrate($card, $algo);
+        if (!isset($hashrate)) continue;
+        $profitrate = $hashrate * $paying;
+        $fees = ($profitrate / 100.) * 1; // 1% stratum fee
+        $profitrate -= $fees;
+        $profit[$card]["$algo.themultipool"] = array(
+            'algo'       => $algo,
+            'profitrate' => $profitrate,
+            'pool'       => 'themultipool',
             'paying'     => $paying,
         );
     }
