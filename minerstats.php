@@ -154,7 +154,7 @@ if ($nicehash_data) {
     print "Grabbing nicehash payrates from $nicehash_url\n";
     $nicehash_json = file_get_contents($nicehash_url);
     $nicehash_data = json_decode($nicehash_json, TRUE)['result']['simplemultialgo'];
-    if ($nicehash_data) $memcache->set("nicehash_data", $nicehash_data, 10);
+    if ($nicehash_data) $memcache->set("nicehash_data", $nicehash_data, 60);
 }
 
 $usd_data = $memcache->get("usd_data");
@@ -165,7 +165,7 @@ if ($usd_data) {
     print "Grabbing USD exchange rate from $usd_url\n";
     $usd_json = file_get_contents($usd_url);
     $usd_data = json_decode($usd_json, TRUE);
-    if ($usd_data) $memcache->set("usd_data", $usd_data, 10);
+    if ($usd_data) $memcache->set("usd_data", $usd_data, 60);
 }
 echo "-->";
 
