@@ -16,7 +16,9 @@
   </head>
   <body>
     <div class="container">
-        <h1>pool profitability</h1>
+        <h1>pool profitability
+            <small class="text-muted">minus fees</small>
+        </h1>
 <?php
 
 // in kH/s
