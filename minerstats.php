@@ -164,71 +164,71 @@ $profit = array();
 
 // handle zpool
 foreach ($zpool_data as $algo => $entry) {
-    $paying = $entry['actual_last24h'];
+    $mbtcmhday = $entry['actual_last24h'];
     foreach ($gfxcards as $card => $rate) {
-        $hashrate = get_hashrate($card, $algo);
-        if (!isset($hashrate)) continue;
-        $profitrate = $hashrate * $paying / 1000.;
-        $fees = ($profitrate / 100.) * $entry['fees'];
-        $profitrate -= $fees;
+        $khs = get_hashrate($card, $algo);
+        if (!isset($khs)) continue;
+        $mbtcday = $khs * $mbtcmhday / 1000.;
+        $fees = ($mbtcday / 100.) * $entry['fees'];
+        $mbtcday -= $fees;
         $profit[$card]["$algo.zpool"] = array(
-            'algo'       => $algo,
-            'profitrate' => $profitrate,
-            'pool'       => 'zpool',
-            'paying'     => $paying,
+            'algo'        => $algo,
+            'mBTC/Day'    => $mbtcday,
+            'pool'        => 'zpool',
+            'mBTC/MH/Day' => $mbtcmhday,
         );
     }
 }
 
 // handle hashpower
 foreach ($hashpower_data as $algo => $entry) {
-    $paying = $entry['actual_last24h'];
+    $mbtcmhday = $entry['actual_last24h'];
     foreach ($gfxcards as $card => $rate) {
-        $hashrate = get_hashrate($card, $algo);
-        if (!isset($hashrate)) continue;
-        $profitrate = $hashrate * $paying;
-        $fees = ($profitrate / 100.) * ($entry['fees']+2); // +2% for withdrawing into BTC
-        $profitrate -= $fees;
+        $khs = get_hashrate($card, $algo);
+        if (!isset($khs)) continue;
+        $mbtcday = $khs * $mbtcmhday;
+        $fees = ($mbtcday / 100.) * ($entry['fees']+2); // +2% for withdrawing into BTC
+        $mbtcday -= $fees;
         $profit[$card]["$algo.hashpower"] = array(
-            'algo'       => $algo,
-            'profitrate' => $profitrate,
-            'pool'       => 'hashpower',
-            'paying'     => $paying,
+            'algo'        => $algo,
+            'mBTC/Day'    => $mbtcday,
+            'pool'        => 'hashpower',
+            'mBTC/MH/Day' => $mbtcmhday,
         );
     }
 }
 
 // handle nicehash
 foreach ($nicehash_data['result']['simplemultialgo'] as $entry) {
-    $paying = $entry['paying'];
+    $mbtcmhday = $entry['paying'];
     $algo = $entry['name'];
     foreach ($gfxcards as $card => $rate) {
-        $hashrate = get_hashrate($card, $algo);
-        if (!isset($hashrate)) continue;
-        $profitrate = $hashrate * $paying / 1000.;
-        $fees = ($profitrate / 100.) * 3; // https://www.nicehash.com/?p=faq#faqg2
-        $profitrate -= $fees;
+        $khs = get_hashrate($card, $algo);
+        if (!isset($khs)) continue;
+        $mbtcday = $khs * $mbtcmhday / 1000.;
+        $fees = ($mbtcday / 100.) * 3; // https://www.nicehash.com/?p=faq#faqg2
+        $mbtcday -= $fees;
         $profit[$card]["$algo.nicehash"] = array(
-            'algo'       => $algo,
-            'profitrate' => $profitrate,
-            'pool'       => 'nicehash',
-            'paying'     => $paying,
+            'algo'        => $algo,
+            'mBTC/Day'    => $mbtcday,
+            'pool'        => 'nicehash',
+            'mBTC/MH/Day' => $mbtcmhday,
         );
     }
 }
 
 // handle wepaybtc
 foreach ($wepaybtc_data as $algo => $entry) {
-    $paying = $entry;
+    $mbtcmhday = $entry;
     foreach ($gfxcards as $card => $rate) {
-        $hashrate = get_hashrate($card, $algo);
-        if (!isset($hashrate)) continue;
-        $profitrate = $hashrate * $paying;
+        $khs = get_hashrate($card, $algo);
+        if (!isset($khs)) continue;
+        $mbtcday = $khs * $mbtcmhday;
         $profit[$card]["$algo.wepaybtc"] = array(
-            'algo'       => $algo,
-            'profitrate' => $profitrate,
-            'pool'       => 'wepaybtc',
-            'paying'     => $paying,
+            'algo'        => $algo,
+            'mBTC/Day'    => $mbtcday,
+            'pool'        => 'wepaybtc',
+            'mBTC/MH/Day' => $mbtcmhday,
         );
     }
 }
@@ -236,43 +236,43 @@ foreach ($wepaybtc_data as $algo => $entry) {
 
 // handle dashminer
 {
-    $paying = $dashminer_data['btcpermhs'];
+    $mbtcmhday = $dashminer_data['btcpermhs'];
     $algo = "x11";
     foreach ($gfxcards as $card => $rate) {
-        $hashrate = get_hashrate($card, $algo);
-        if (!isset($hashrate)) continue;
-        $profitrate = $hashrate * $paying;
+        $khs = get_hashrate($card, $algo);
+        if (!isset($khs)) continue;
+        $mbtcday = $khs * $mbtcmhday;
         $profit[$card]["$algo.dashminer"] = array(
-            'algo'       => $algo,
-            'profitrate' => $profitrate,
-            'pool'       => 'dashminer',
-            'paying'     => $paying,
+            'algo'        => $algo,
+            'mBTC/Day'    => $mbtcday,
+            'pool'        => 'dashminer',
+            'mBTC/MH/Day' => $mbtcmhday,
         );
     }
 }
 
 // handle themultipool
 {
-    $paying = floatval($themultipool_x11);
+    $mbtcmhday = floatval($themultipool_x11);
     $algo = "x11";
     foreach ($gfxcards as $card => $rate) {
-        $hashrate = get_hashrate($card, $algo);
-        if (!isset($hashrate)) continue;
-        $profitrate = $hashrate * $paying;
-        $fees = ($profitrate / 100.) * 1; // 1% stratum fee
-        $profitrate -= $fees;
+        $khs = get_hashrate($card, $algo);
+        if (!isset($khs)) continue;
+        $mbtcday = $khs * $mbtcmhday;
+        $fees = ($mbtcday / 100.) * 1; // 1% stratum fee
+        $mbtcday -= $fees;
         $profit[$card]["$algo.themultipool"] = array(
-            'algo'       => $algo,
-            'profitrate' => $profitrate,
-            'pool'       => 'themultipool',
-            'paying'     => $paying,
+            'algo'        => $algo,
+            'mBTC/Day'    => $mbtcday,
+            'pool'        => 'themultipool',
+            'mBTC/MH/Day' => $mbtcmhday,
         );
     }
 }
 
 function profitrate_cmp($a, $b) {
-    $left = $a["profitrate"];
-    $right = $b["profitrate"];
+    $left = $a["mBTC/Day"];
+    $right = $b["mBTC/Day"];
     if ($left == $right) return 0;
     return ($left > $right) ? -1 : 1;
 }
@@ -327,19 +327,18 @@ foreach ($profit as $card => $entries) {
     print '</tr></thead>';
     print '<tbody>';
     foreach ($entries as $entry) {
-        $profitrate = $entry['profitrate'];
-        if (!$profitrate) continue;
-        $usdrate = ($profitrate/1000.) * $usd_data['vwap'];
+        $mbtcday = $entry['mBTC/Day'];
+        if (!$mbtcday) continue;
+        $usdrate = ($mbtcday/1000.) * $usd_data['vwap'];
         $algo = fix_hashname($entry['algo']);
-        $hashrate = $gfxcards[$card][$algo];
-        $paying = $entry['paying'];
+        $khs = $gfxcards[$card][$algo];
         print '<tr>';
         print_td_right($algo);
         print_td($entry['pool']);
-        print_td_right(sprintf('%.2f', $profitrate), 'hidden-xs-down');
+        print_td_right(sprintf('%.2f', $mbtcday), 'hidden-xs-down');
         print_td(sprintf('$%.2f', $usdrate));
-        print_td_right(sprintf('%.4f', $paying), 'hidden-xs-down');
-        print_td_right(sprintf('%.2f MH', $hashrate/1000));
+        print_td_right(sprintf('%.4f', $entry['mBTC/MH/Day']), 'hidden-xs-down');
+        print_td_right(sprintf('%.2f MH', $khs/1000));
         print '</tr>';
     }
 
