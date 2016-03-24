@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>hmage.net — pool profitability</title>
+    <title>pool profitability</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.css" crossorigin="anonymous">
@@ -25,9 +25,7 @@
   </head>
   <body>
     <div class="container">
-        <h1>pool profitability
-            <small class="text-muted">minus fees</small>
-        </h1>
+        <h2 style="text-align:center">pool profitability</h2>
 <?php
 
 // in kH/s
@@ -278,11 +276,11 @@ foreach ($profit as $card => $entries) {
             data-search="true">';
     print '<thead><tr>';
     print_th_right("Algorithm");
-    print_th("pool");
+    print_th("Pool");
     print_th_right("mBTC/day", 'hidden-xs-down');
     print_th("USD/day");
     print_th_right('mBTC/MH/day', 'hidden-xs-down');
-    print_th_right("hashrate");
+    print_th_right("Hashrate", 'hidden-xs-down');
     print '</tr></thead>';
     print '<tbody>';
     foreach ($entries as $entry) {
@@ -295,9 +293,9 @@ foreach ($profit as $card => $entries) {
         print_td_right($algo);
         print_td($entry['pool']);
         print_td_right(sprintf('%.2f', $mbtcday), 'hidden-xs-down');
-        print_td(sprintf('$%.2f', $usdrate));
+        print_td(sprintf('%.2f', $usdrate));
         print_td_right(sprintf('%.4f', $entry['mBTC/MH/Day']), 'hidden-xs-down');
-        print_td_right(sprintf('%.2f MH', $khs/1000));
+        print_td_right(sprintf('%.2f MH', $khs/1000), 'hidden-xs-down');
         print '</tr>';
     }
 
@@ -307,8 +305,10 @@ foreach ($profit as $card => $entries) {
 
 }
 print '</div>';
-
-echo "<!--\n";
+?>
+<small class="center-block" style="text-align:center">Pool fees are taken into account.</small>
+<?php
+echo "<pre>\n";
 function printer($name) {
     global ${"$name" . "_data"};
     echo "$name:\n";
@@ -321,7 +321,7 @@ function printer($name) {
 // printer("hashminer");
 // printer("webpaybtc");
 // printer("themultipool");
-echo "-->";
+echo "</pre>";
 ?>
 </div>
 
