@@ -47,8 +47,14 @@ $gfxcards = array(
     "keccak"      =>  394.50 * 1000, // ccminer_sp
     "sha256"      =>  575.50 * 1000, // ccminer_neoscrypt
     "groestl"     =>   22.36 * 1000, // ccminer_neoscrypt
+    "blake"       => 1481.60 * 1000, // ccminer_sphash
     "blake2s"     =>  969.74 * 1000, // ccminer_oxen
     "ethereum"    =>   18.83 * 1000, // ethminer-0.9.41-genoil-1.0.5
+    "sib"         => 1931.09,        // ccminer_tpruvot
+    "skein"       =>  284.12 * 1000, // ccminer_sphash
+    "skein2"      =>  147.47 * 1000, // ccminer_tpruvot
+    "x14"         => 5784.32,        // ccminer_tpruvot
+    "zr5"         => 2764.23,        // ccminer_oxen
   ),
   'GPU GTX970 OC' => array(
     "neoscrypt"   =>  677.54,        // ccminer_neoscrypt
@@ -58,6 +64,8 @@ $gfxcards = array(
     "x11"         => 8946.79,        // ccminer_sphash
     "x13"         => 7171.85,        // ccminer_neoscrypt
     "x15"         => 6164.13,        // ccminer_neoscrypt
+    "skein"       =>  317.79 * 1000, // ccminer_sphash
+    "ethereum"    =>   22.08 * 1000, // ethminer-0.9.41-genoil-1.0.6
   ),
   'GPU GTX570' => array(
     "quark"       =>  527.30, // ccminer_oxen
