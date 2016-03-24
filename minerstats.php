@@ -122,12 +122,16 @@ $memcache->addServer('localhost', 11211);
 
 function fix_hashname($algo) {
     if (!is_string($algo)) return;
+    $algo = strtolower($algo);
     if ($algo == "lyra2re")        $algo = "lyra2";
+    if ($algo == "lyra2re2")       $algo = "lyra2v2";
     if ($algo == "lyra2rev2")      $algo = "lyra2v2";
     if ($algo == "scryptjanenf16") $algo = "scrypt-jane";
     if ($algo == "blake256r8")     $algo = "blakecoin";
     if ($algo == "blake256r14")    $algo = "blake";
     if ($algo == "blake256r8vnl")  $algo = "vanilla";
+    if ($algo == "blake-vanilla")  $algo = "vanilla";
+    if ($algo == "ethash")         $algo = "ethereum";
     return $algo;
 }
 
@@ -163,10 +167,12 @@ echo "<!--\n";
 
 $zpool_data     = url_to_array_cached("http://www.zpool.ca/api/status", "zpool_data");
 $hashpower_data = url_to_array_cached("http://hashpower.co/api/status", "hashpower_data");
+$yiimp_data     = url_to_array_cached("http://yiimp.ccminer.org/api/status", "yiimp_data");
 $nicehash_data  = url_to_array_cached("https://www.nicehash.com/api?method=simplemultialgo.info", "nicehash_data")['result']['simplemultialgo'];
 $usd_data       = url_to_array_cached("https://www.bitstamp.net/api/ticker/", "usd_data");
 $dashminer_data = url_to_array_cached("http://dashminer.com/payouts.json", "dashminer_data");
 $wepaybtc_data  = url_to_array_cached("http://wepaybtc.com/payouts.json", "wepaybtc_data");
+$miningpoolhub_data = url_to_array_cached('https://miningpoolhub.com/index.php?page=api&action=getautoswitchingandprofitsstatistics', 'miningpoolhub_data')['return'];
 
 $themultipool_x11_data    = url_cached("http://themultipool.com/static/x11_profit.txt",    "themultipool_x11_data");
 $themultipool_scrypt_data = url_cached("http://themultipool.com/static/scrypt_profit.txt", "themultipool_scrypt_data");
@@ -191,6 +197,7 @@ function handle_pool($pool_name, $data, $extra_fee, $algo_name, $payrate_name, $
         }
         $fee = $extra_fee;
         if (isset($entry['fees'])) $fee += $entry['fees'];
+        if (isset($entry['workers']) && $entry['workers'] <= 0) continue;
         handle_algo($pool_name, $algo, $payrate, $fee, $payrate_multiplier);
     }
 }
@@ -198,6 +205,7 @@ function handle_pool($pool_name, $data, $extra_fee, $algo_name, $payrate_name, $
 function handle_algo($pool_name, $algo, $payrate, $fee, $payrate_multiplier = 1) {
     global $profit;
     global $gfxcards;
+    $algo = fix_hashname($algo);
     $mbtcmhday = $payrate * $payrate_multiplier; // to get mBTC/MH/Day
     if ($pool_name == "nicehash" && $algo == "sha256") $mbtcmhday *= 1000; // special case for nicehash sha256
     foreach ($gfxcards as $card => $rates) {
@@ -217,8 +225,10 @@ function handle_algo($pool_name, $algo, $payrate, $fee, $payrate_multiplier = 1)
 
 handle_pool("zpool",     $zpool_data,     0, '', 'actual_last24h');
 handle_pool("hashpower", $hashpower_data, 2, '', 'actual_last24h', 1000);
+handle_pool("yiimp",     $yiimp_data,     0, '', 'estimate_last24h', 1000);
 handle_pool("nicehash",  $nicehash_data,  3, 'name', 'paying');
 handle_pool("wepaybtc",  $wepaybtc_data,  0, 'name', 'paying', 1000);
+handle_pool("miningpoolhub", $miningpoolhub_data, 0.1, 'algo', 'profit');
 
 handle_algo("dashminer",    "x11",    $dashminer_data['btcpermhs'],        0, 1000);
 handle_algo("themultipool", "x11",    floatval($themultipool_x11_data),    1, 1000);
@@ -319,9 +329,12 @@ function printer($name) {
 // printer("nicehash");
 // printer("hashpower");
 // printer("usd");
-// printer("hashminer");
-// printer("webpaybtc");
-// printer("themultipool");
+// printer("dashminer");
+// printer("wepaybtc");
+// printer("themultipool_x11");
+// printer("themultipool_scrypt");
+// printer("themultipool_sha256");
+// printer("yiimp");
 echo "</pre>";
 ?>
 </div>
