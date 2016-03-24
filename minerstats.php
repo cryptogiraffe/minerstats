@@ -8,11 +8,20 @@
     <title>hmage.net — pool profitability</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.css">
+    <style>
+    <!--
+    .fixed-table-container tbody td { border-left: 0px;}
+    -->
+    </style>
 
     <!-- jQuery first, then Bootstrap JS. -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+    <!-- // <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-2.2.2.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.js" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.js" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.js"></script>
   </head>
   <body>
     <div class="container">
@@ -251,10 +260,11 @@ foreach ($profit as $card => $entries) {
 }
 print "</ul>";
 
+function to_id($text) { return str_replace("/", "_", $text);}
+function print_th($text, $extraclass='') {print "<th class='$extraclass' data-field='". to_id($text) ."' data-sortable='true'>$text</th>\n";}
+function print_th_right($text, $extraclass='') {print "<th class='text-xs-right $extraclass' data-field='". to_id($text) ."' data-sortable='true'>$text</th>\n";}
 function print_td($text, $extraclass='') {print "<td class='$extraclass'>$text</td>\n";}
 function print_td_right($text, $extraclass='') {print "<td class='text-xs-right $extraclass'>$text</td>\n";}
-function print_th($text, $extraclass='') {print "<th class='$extraclass'>$text</th>\n";}
-function print_th_right($text, $extraclass='') {print "<th class='text-xs-right $extraclass'>$text</th>\n";}
 
 
 // output tab contents
@@ -263,7 +273,9 @@ print "<div class='tab-content small'>";
 foreach ($profit as $card => $entries) {
     uasort($entries, 'profitrate_cmp');
     print "<div class='tab-pane " . say_active($said_active) . "' id='" . card_to_anchor($card) . "'>";
-    print '<table class="table table-striped table-hover table-condensed table-sm">';
+    print '<table id="poolstats" class="table table-striped table-hover table-condensed table-sm"
+            data-toggle="table" data-sort-name="USD_day" data-sort-order="desc"
+            data-search="true">';
     print '<thead><tr>';
     print_th_right("Algorithm");
     print_th("pool");
@@ -315,7 +327,8 @@ echo "-->";
 
 <script>
 $(function () {
-    $('#cardlist a[href="' + window.location.hash + '"]').tab('show')
+    $('#cardlist a[href="' + window.location.hash + '"]').tab('show');
+    $('[data-toggle="tooltip"]').tooltip();
 })
 $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
     window.location.hash = e.target.hash;
