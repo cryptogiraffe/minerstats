@@ -181,7 +181,7 @@ $nicehash_data  = url_to_array_cached("https://www.nicehash.com/api?method=simpl
 $usd_data       = url_to_array_cached("https://www.bitstamp.net/api/ticker/", "usd_data");
 $dashminer_data = url_to_array_cached("http://dashminer.com/payouts.json", "dashminer_data");
 $wepaybtc_data  = url_to_array_cached("http://wepaybtc.com/payouts.json", "wepaybtc_data");
-$miningpoolhub_data = url_to_array_cached('https://miningpoolhub.com/index.php?page=api&action=getautoswitchingandprofitsstatistics', 'miningpoolhub_data')['return'];
+$mph_data =       url_to_array_cached("https://miningpoolhub.com/index.php?page=api&action=getautoswitchingandprofitsstatistics", "mph_data")['return'];
 
 $themultipool_x11_data    = url_cached("http://themultipool.com/static/x11_profit.txt",    "themultipool_x11_data");
 $themultipool_scrypt_data = url_cached("http://themultipool.com/static/scrypt_profit.txt", "themultipool_scrypt_data");
@@ -236,7 +236,7 @@ handle_pool("hashpower", $hashpower_data, 2, '', 'actual_last24h', 1000);
 handle_pool("yiimp",     $yiimp_data,     0, '', 'estimate_last24h', 1000);
 handle_pool("nicehash",  $nicehash_data,  3, 'name', 'paying');
 handle_pool("wepaybtc",  $wepaybtc_data,  0, 'name', 'paying', 1000);
-handle_pool("miningpoolhub", $miningpoolhub_data, 0.1, 'algo', 'profit');
+handle_pool("mph",       $mph_data,     0.1, 'algo', 'profit');
 
 handle_algo("dashminer",    "x11",    $dashminer_data['btcpermhs'],        0, 1000);
 handle_algo("themultipool", "x11",    floatval($themultipool_x11_data),    1, 1000);
