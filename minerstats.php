@@ -160,14 +160,11 @@ function get_hashrate($card, $algo) {
 function url_cached($url, $id) {
     global $memcache;
     $data = $memcache->get($id);
-    if ($data) {
-        print "Grabbed $id from memcache\n";
-        return $data;
-    }
+    if ($data) return $data;
 
-    print "Grabbing $id from $url\n";
     $data = file_get_contents($url);
     if ($data) $memcache->set($id, $data, 60);
+    else trigger_error("Couldn't get $url", E_USER_WARNING);
     return $data;
 }
 
@@ -176,8 +173,6 @@ function url_to_array_cached($url, $id) {
     $data = json_decode($json, TRUE);
     return $data;
 }
-
-echo "<!--\n";
 
 $zpool_data     = url_to_array_cached("http://www.zpool.ca/api/status", "zpool_data");
 $hashpower_data = url_to_array_cached("http://hashpower.co/api/status", "hashpower_data");
@@ -191,7 +186,6 @@ $miningpoolhub_data = url_to_array_cached('https://miningpoolhub.com/index.php?p
 $themultipool_x11_data    = url_cached("http://themultipool.com/static/x11_profit.txt",    "themultipool_x11_data");
 $themultipool_scrypt_data = url_cached("http://themultipool.com/static/scrypt_profit.txt", "themultipool_scrypt_data");
 $themultipool_sha256_data = url_cached("http://themultipool.com/static/sha256_profit.txt", "themultipool_sha256_data");
-echo "-->";
 
 $profit = array();
 
