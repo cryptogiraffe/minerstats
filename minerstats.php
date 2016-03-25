@@ -196,8 +196,9 @@ function deduct_fee(&$value, $fee) {
     $value -= $fees;
 }
 
-function handle_pool($pool_name, $data, $extra_fee, $algo_name, $payrate_name, $payrate_multiplier = 1) {
-    foreach ($data as $algo => $entry) {
+function handle_pool($pool_name, $extra_fee, $algo_name, $payrate_name, $payrate_multiplier = 1) {
+    global ${"$pool_name" . "_data"};
+    foreach (${"$pool_name" . "_data"} as $algo => $entry) {
         if (!is_string($algo)) $algo = $entry[$algo_name];
         if (is_numeric($entry)) {
             $payrate = $entry;
@@ -232,12 +233,12 @@ function handle_algo($pool_name, $algo, $payrate, $fee, $payrate_multiplier = 1)
     }
 }
 
-handle_pool("zpool",     $zpool_data,     0, '', 'actual_last24h');
-handle_pool("hashpower", $hashpower_data, 2, '', 'actual_last24h', 1000);
-handle_pool("yiimp",     $yiimp_data,     0, '', 'estimate_last24h', 1000);
-handle_pool("nicehash",  $nicehash_data,  3, 'name', 'paying');
-handle_pool("wepaybtc",  $wepaybtc_data,  0, 'name', 'paying', 1000);
-handle_pool("mph",       $mph_data,     0.1, 'algo', 'profit');
+handle_pool("zpool",     0, '', 'actual_last24h');
+handle_pool("hashpower", 2, '', 'actual_last24h', 1000);
+handle_pool("yiimp",     0, '', 'estimate_last24h', 1000);
+handle_pool("nicehash",  3, 'name', 'paying');
+handle_pool("wepaybtc",  0, 'name', 'paying', 1000);
+handle_pool("mph",     0.3, 'algo', 'profit');
 
 handle_algo("dashminer",    "x11",    $dashminer_data['btcpermhs'],        0, 1000);
 handle_algo("themultipool", "x11",    floatval($themultipool_x11_data),    1, 1000);
