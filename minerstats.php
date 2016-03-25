@@ -188,6 +188,7 @@ $themultipool_scrypt_data = url_cached("http://themultipool.com/static/scrypt_pr
 $themultipool_sha256_data = url_cached("http://themultipool.com/static/sha256_profit.txt", "themultipool_sha256_data");
 
 $profit = array();
+foreach ($gfxcards as $card => $rates) {$profit[$card] = array();}
 
 function deduct_fee(&$value, $fee) {
     if (!isset($fee)) return;
@@ -249,9 +250,6 @@ function profitrate_cmp($a, $b) {
     if ($left == $right) return 0;
     return ($left > $right) ? -1 : 1;
 }
-
-// sort by card/CPU name
-ksort($profit);
 
 function card_to_anchor($card) {
     $anchor = str_replace(' ', '', $card);
