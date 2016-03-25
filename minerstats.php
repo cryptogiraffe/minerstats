@@ -267,7 +267,7 @@ function say_active(&$said_active) {
 $said_active = 0;
 print '<ul class="nav nav-pills small" id="cardlist" role="tablist">';
 foreach ($profit as $card => $entries) {
-    print '<a class="nav-item nav-link ' . say_active($said_active) . '" data-toggle="tab" href="#' . card_to_anchor($card) . '">';
+    print '<a class="nav-item nav-link ' . say_active($said_active) . '" data-toggle="tab" href="#' . card_to_anchor($card) . '" role="tab">';
     $card_html = htmlspecialchars($card, ENT_HTML5);
     $card_html = str_replace("CPU", '<span class="label label-default">CPU</span>', $card_html);
     $card_html = str_replace("GPU", '<span class="label label-default">GPU</span>', $card_html);
@@ -295,9 +295,9 @@ foreach ($profit as $card => $entries) {
     print '<thead><tr>';
     print_th_right("Algorithm");
     print_th("Pool");
-    print_th_right("mBTC/day", 'hidden-xs-down');
-    print_th("USD/day");
-    print_th_right('mBTC/MH/day', 'hidden-xs-down');
+    print_th_right("m฿/day", 'hidden-xs-down');
+    print_th("$/day");
+    print_th_right('m฿/MH/day', 'hidden-xs-down');
     print_th_right("Hashrate", 'hidden-xs-down');
     print '</tr></thead>';
     print '<tbody>';
