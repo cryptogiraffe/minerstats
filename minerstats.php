@@ -120,6 +120,46 @@ $gfxcards = array(
     "lyra2"       => 397.56,
     "scrypt-jane" =>   0.056,
   ),
+  'VPS AWS t2.micro $10/mo' => array(
+    "lyra2"       =>  13.95,
+    "scrypt-jane" =>   2.130 / 1000,
+  ),
+  'VPS vultr $5/mo' => array(
+    "anime"         => 98780 / 1000,
+    "blake"         => 2962196 / 1000,
+    "blake2s"       => 2247789 / 1000,
+    "blakecoin"     => 4802667 / 1000,
+    "bmw"           => 1671996 / 1000,
+    "c11"           => 43913 / 1000,
+    "cryptonight"   => 30 / 1000,
+    "dmd-gr"        => 178548 / 1000,
+    "drop"          => 4629 / 1000,
+    "fresh"         => 80152 / 1000,
+    "groestl"       => 179438 / 1000,
+    "heavy"         => 29191 / 1000,
+    "keccak"        => 1337969 / 1000,
+    "luffa"         => 500518 / 1000,
+    "lyra2"         => 140094 / 1000,
+    "myr-gr"        => 292040 / 1000,
+    "neoscrypt"     => 2962 / 1000,
+    "nist5"         => 158367 / 1000,
+    "pentablake"    => 558395 / 1000,
+    "pluck"         => 267 / 1000,
+    "quark"         => 98521 / 1000,
+    "qubit"         => 70516 / 1000,
+    "s3"            => 191845 / 1000,
+    "scrypt"        => 14367 / 1000,
+    "scryptjane:16" => 27 / 1000,
+    "sha256d"       => 8373836 / 1000,
+    "shavite3"      => 379739 / 1000,
+    "skein"         => 1038268 / 1000,
+    "skein2"        => 1204514 / 1000,
+    "x11"           => 43358 / 1000,
+    "x13"           => 28671 / 1000,
+    "x14"           => 27621 / 1000,
+    "x15"           => 26121 / 1000,
+    "zr5"           => 70582 / 1000,
+  ),
 );
 ?>
 <!DOCTYPE html>
@@ -163,11 +203,13 @@ function fix_hashname($algo) {
     if ($algo == "lyra2re2")       $algo = "lyra2v2";
     if ($algo == "lyra2rev2")      $algo = "lyra2v2";
     if ($algo == "scryptjanenf16") $algo = "scrypt-jane";
+    if ($algo == "scrypt-jane:16") $algo = "scrypt-jane";
     if ($algo == "blake256r8")     $algo = "blakecoin";
     if ($algo == "blake256r14")    $algo = "blake";
     if ($algo == "blake256r8vnl")  $algo = "vanilla";
     if ($algo == "blake-vanilla")  $algo = "vanilla";
     if ($algo == "ethash")         $algo = "ethereum";
+    if ($algo == "sha256d")        $algo = "sha256";
     return $algo;
 }
 
@@ -276,8 +318,11 @@ function profitrate_cmp($a, $b) {
 }
 
 function card_to_anchor($card) {
-    $anchor = str_replace(' ', '', $card);
-    return htmlentities($anchor);
+    $card = str_replace(' ', '', $card);
+    $card = str_replace('.', '', $card);
+    $card = str_replace('$', '', $card);
+    $card = str_replace('/', '', $card);
+    return htmlentities($card);
 }
 
 function say_active(&$said_active) {
@@ -293,6 +338,7 @@ foreach ($profit as $card => $entries) {
     print '<a class="nav-item nav-link ' . say_active($said_active) . '" data-toggle="tab" href="#' . card_to_anchor($card) . '" role="tab">';
     $card_html = htmlspecialchars($card, ENT_HTML5);
     $card_html = str_replace("CPU", '<span class="label label-default">CPU</span>', $card_html);
+    $card_html = str_replace("VPS", '<span class="label label-default">VPS</span>', $card_html);
     $card_html = str_replace("GPU", '<span class="label label-default">GPU</span>', $card_html);
     print "$card_html";
     print "</a>";
