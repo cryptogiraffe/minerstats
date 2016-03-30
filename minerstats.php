@@ -2,7 +2,7 @@
 
 // in kH/s
 $gfxcards = array(
-  'GPU GTX970' => array(
+  'GPU 970' => array(
     "blake"       => 1481.60 * 1000, // ccminer_sphash
     "blake2s"     =>  969.74 * 1000, // ccminer_oxen
     "decred"      => 1320.04 * 1000, // ccminer_oxen
@@ -28,7 +28,7 @@ $gfxcards = array(
     "x15"         => 5500,           // ccminer_neoscrypt
     "zr5"         => 2764.23,        // ccminer_oxen
   ),
-  'GPU GTX970 OC' => array(
+  'GPU 970 OC' => array(
     "decred"      => 1507.66 * 1000, // ccminer_oxen
     "ethereum"    =>   20.14 * 1000, // ethminer-0.9.41-genoil-1.0.6
     "lyra2"       => 2198.41,        // ccminer_sp_201603
@@ -42,13 +42,13 @@ $gfxcards = array(
     "x13"         => 7171.85,        // ccminer_neoscrypt
     "x15"         => 6164.13,        // ccminer_neoscrypt
   ),
-  'GPU GTX570' => array(
+  'GPU 570' => array(
     "quark"       =>  527.30, // ccminer_oxen
     "x11"         => 1280.00, // ccminer_oxen
     "x13"         => 1091.16, // ccminer_oxen
     "x15"         =>  987.65, // ccminer_oxen
   ),
-  'GPU R270X' => array(
+  'GPU 270X' => array(
     "keccak"    =>  233.1 * 1000,
     "lyra2v2"   =>  414,
     "neoscrypt" =>  268,
@@ -64,7 +64,7 @@ $gfxcards = array(
   /********
    * CPU's
    ********/
-  'i7 4770 CPU' => array(
+  'CPU i7 4770' => array(
     "argon2"      =>  26.67,
     "axiom"       =>   0.386,
     "blake"       =>  12.63 * 1000,
@@ -88,12 +88,12 @@ $gfxcards = array(
     "x15"         => 152.57,
     "yescrypt"    =>   1.61,
   ),
-  'i7 6700 CPU' => array(
+  'CPU i7 6700' => array(
     "axiom"       =>   0.399,
     "lyra2"       => 762.590,
     "scrypt-jane" =>   0.299,
   ),
-  'X4 965 CPU' => array(
+  'CPU X4 965' => array(
     "axiom"       =>   0.059,
     "lyra2"       => 397.56,
     "scrypt-jane" =>   0.056,
