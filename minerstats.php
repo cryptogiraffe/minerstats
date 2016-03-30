@@ -120,7 +120,7 @@ $gfxcards = array(
     "lyra2"       => 397.56,
     "scrypt-jane" =>   0.056,
   ),
-  'VPS AWS t2.micro $10/mo' => array(
+  'VPS AWS t2.micro' => array(
     "lyra2"       =>  13.95,
     "scrypt-jane" =>   2.130 / 1000,
   ),
