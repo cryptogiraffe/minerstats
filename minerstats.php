@@ -6,7 +6,7 @@ $gfxcards = array(
     "blake"       => 1481.60 * 1000, // ccminer_sphash
     "blake2s"     =>  969.74 * 1000, // ccminer_oxen
     "decred"      => 1320.04 * 1000, // ccminer_oxen
-    "ethereum"    =>   18.83 * 1000, // ethminer-0.9.41-genoil-1.0.5
+    "ethereum"    =>   16.19 * 1000, // ethminer-0.9.41-genoil-1.0.5
     "groestl"     =>   22.36 * 1000, // ccminer_neoscrypt
     "keccak"      =>  394.50 * 1000, // ccminer_sp
     "lyra2"       => 1850,           // ccminer_neoscrypt
@@ -30,7 +30,7 @@ $gfxcards = array(
   ),
   'GPU 970 OC' => array(
     "decred"      => 1507.66 * 1000, // ccminer_oxen
-    "ethereum"    =>   20.14 * 1000, // ethminer-0.9.41-genoil-1.0.6
+    "ethereum"    =>   17.20 * 1000, // ethminer-0.9.41-genoil-1.0.6
     "lyra2"       => 2198.41,        // ccminer_sp_201603
     "lyra2v2"     =>   10.68 * 1000, // ccminer_sp_201603
     "neoscrypt"   =>  699.89,        // ccminer_neoscrypt
