@@ -218,6 +218,7 @@ function handle_algo($pool_name, $algo, $payrate, $fee, $payrate_multiplier = 1)
     $algo = fix_hashname($algo);
     $mbtcmhday = $payrate * $payrate_multiplier; // to get mBTC/MH/Day
     if ($pool_name == "nicehash" && $algo == "sha256") $mbtcmhday *= 1000; // special case for nicehash sha256
+    if ($pool_name == "zpool" && $algo == "decred") $mbtcmhday /= 1000; // special case for nicehash sha256
     foreach ($gfxcards as $card => $rates) {
         $khs = get_hashrate($card, $algo);
         if (!isset($khs)) continue;
