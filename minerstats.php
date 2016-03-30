@@ -235,12 +235,13 @@ function url_cached($url, $id) {
 function url_to_array_cached($url, $id) {
     $json = url_cached($url, $id);
     $data = json_decode($json, TRUE);
+    if (!$data) trigger_error("Couldn't decode json from $url", E_USER_WARNING);
     return $data;
 }
 
 $zpool_data     = url_to_array_cached("http://www.zpool.ca/api/status", "zpool_data");
 $hashpower_data = url_to_array_cached("http://hashpower.co/api/status", "hashpower_data");
-$yiimp_data     = url_to_array_cached("http://yiimp.ccminer.org/api/status", "yiimp_data");
+// $yiimp_data     = url_to_array_cached("http://yiimp.ccminer.org/api/status", "yiimp_data");
 $nicehash_data  = url_to_array_cached("https://www.nicehash.com/api?method=simplemultialgo.info", "nicehash_data")['result']['simplemultialgo'];
 $usd_data       = url_to_array_cached("https://www.bitstamp.net/api/ticker/", "usd_data");
 $dashminer_data = url_to_array_cached("http://dashminer.com/payouts.json", "dashminer_data");
@@ -300,7 +301,7 @@ function handle_algo($pool_name, $algo, $payrate, $fee, $payrate_multiplier = 1)
 
 handle_pool("zpool",     0, '', 'actual_last24h');
 handle_pool("hashpower", 2, '', 'actual_last24h', 1000);
-handle_pool("yiimp",     0, '', 'estimate_last24h', 1000);
+// handle_pool("yiimp",     0, '', 'actual_last24h', 1000);
 handle_pool("nicehash",  3, 'name', 'paying');
 handle_pool("wepaybtc",  0, 'name', 'paying', 1000);
 handle_pool("mph",     0.3, 'algo', 'profit');
