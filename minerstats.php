@@ -38,17 +38,17 @@ $gfxcards = array(
     "x15"         =>  987.65, // ccminer_oxen
   ),
   'GPU 270X' => array(
-    "decred"    =>  735.9 * 1000, // sgminer-5-3-1-decred
+    "decred"    =>  650.0 * 1000, // sgminer-5-3-1-decred
     "keccak"    =>  233.1 * 1000,
     "lyra2v2"   =>  414,
-    "neoscrypt" =>  268,
+    "neoscrypt" =>  240, // sgminer-5-3-0-general
     "nist5"     => 5200,
-    "quark"     => 7100,
-    "qubit"     => 7700,
+    "quark"     => 6970, // sgminer-5-1-0-optimized
+    "qubit"     => 7740, // sgminer-5-1-1-optimized
     "vanilla"   => 1437.00 * 1000,
-    "x11"       => 6850,
-    "x13"       => 3000,
-    "x15"       => 1400,
+    "x11"       => 6850, // sgminer-5-1-0-optimized
+    "x13"       => 3000, // sgminer-5-3-0-general
+    "x15"       => 1320, // sgminer-5-3-0-general
   ),
 
   /********
