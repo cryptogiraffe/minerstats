@@ -209,7 +209,7 @@ function url_to_array_cached($url, $id) {
 
 $zpool_data     = url_to_array_cached("http://www.zpool.ca/api/status", "zpool_data");
 $hashpower_data = url_to_array_cached("http://hashpower.co/api/status", "hashpower_data");
-// $yiimp_data     = url_to_array_cached("http://yiimp.ccminer.org/api/status", "yiimp_data");
+$yiimp_data     = url_to_array_cached("http://yiimp.ccminer.org/api/status", "yiimp_data");
 $nicehash_data  = url_to_array_cached("https://www.nicehash.com/api?method=simplemultialgo.info", "nicehash_data")['result']['simplemultialgo'];
 $usd_data       = url_to_array_cached("https://www.bitstamp.net/api/ticker/", "usd_data");
 $dashminer_data = url_to_array_cached("http://dashminer.com/payouts.json", "dashminer_data");
@@ -219,6 +219,8 @@ $mph_data =       url_to_array_cached("https://miningpoolhub.com/index.php?page=
 $themultipool_x11_data    = url_cached("http://themultipool.com/static/x11_profit.txt",    "themultipool_x11_data");
 $themultipool_scrypt_data = url_cached("http://themultipool.com/static/scrypt_profit.txt", "themultipool_scrypt_data");
 $themultipool_sha256_data = url_cached("http://themultipool.com/static/sha256_profit.txt", "themultipool_sha256_data");
+
+$yiimp_data = str_replace(": ,", ": 0,", $yiimp_data);
 
 $profit = array();
 foreach ($gfxcards as $card => $rates) {$profit[$card] = array();}
@@ -269,7 +271,7 @@ function handle_algo($pool_name, $algo, $payrate, $fee, $payrate_multiplier = 1)
 
 handle_pool("zpool",     0, '', 'actual_last24h');
 handle_pool("hashpower", 2, '', 'actual_last24h', 1000);
-// handle_pool("yiimp",     0, '', 'actual_last24h', 1000);
+handle_pool("yiimp",     0, '', 'actual_last24h', 1000);
 handle_pool("nicehash",  3, 'name', 'paying');
 handle_pool("wepaybtc",  0, 'name', 'paying', 1000);
 handle_pool("mph",     0.3, 'algo', 'profit');
