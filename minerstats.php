@@ -231,59 +231,79 @@ function deduct_fee(&$value, $fee) {
     $value -= $fees;
 }
 
-function handle_pool($pool_name, $extra_fee, $algo_name, $payrate_name, $payrate_multiplier = 1) {
+function handle_pool($pool_name, $extra_fee, $algo_name, $payrate_current_name, $payrate_current_multiplier, $payrate_last24h_name, $payrate_last24h_multiplier) {
     global ${"$pool_name" . "_data"};
     foreach (${"$pool_name" . "_data"} as $algo => $entry) {
+        $payrate_last24h = 0;
         if (!is_string($algo)) $algo = $entry[$algo_name];
         if (is_numeric($entry)) {
-            $payrate = $entry;
+            $payrate_current = $entry;
         } else {
-            $payrate = $entry[$payrate_name];
+            $payrate_current = $entry[$payrate_current_name];
+            if (isset($entry[$payrate_last24h_name])) $payrate_last24h = $entry[$payrate_last24h_name];
         }
         $fee = $extra_fee;
         if (isset($entry['fees'])) $fee += $entry['fees'];
         if (isset($entry['workers']) && $entry['workers'] <= 0) continue;
-        handle_algo($pool_name, $algo, $payrate, $fee, $payrate_multiplier);
+        handle_algo($pool_name, $algo, $payrate_current, $fee, $payrate_current_multiplier, $payrate_last24h, $payrate_last24h_multiplier);
     }
 }
 
-function handle_algo($pool_name, $algo, $payrate, $fee, $payrate_multiplier = 1) {
+function handle_algo($pool_name, $algo, $payrate_current, $fee, $payrate_current_multiplier, $payrate_last24h, $payrate_last24h_multiplier) {
     global $profit;
     global $gfxcards;
     $algo = fix_hashname($algo);
-    $mbtcmhday = $payrate * $payrate_multiplier; // to get mBTC/MH/Day
-    if ($pool_name == "nicehash" && $algo == "sha256") $mbtcmhday *= 1000; // special case for nicehash sha256
-    if ($pool_name == "zpool" && $algo == "decred") $mbtcmhday /= 1000; // special case for nicehash sha256
+    $mbtcmhday_current = $payrate_current * $payrate_current_multiplier; // to get mBTC/MH/Day
+    $mbtcmhday_last24h = $payrate_last24h * $payrate_last24h_multiplier;
+    if ($pool_name == "nicehash" && $algo == "sha256") $mbtcmhday_current *= 1000; // special case for nicehash sha256
+    if ($pool_name == "nicehash" && $algo == "sha256") $mbtcmhday_last24h *= 1000; // special case for nicehash sha256
+    if ($pool_name == "zpool" && $algo == "decred") $mbtcmhday_current /= 1000; // special case for nicehash sha256
+    if ($pool_name == "zpool" && $algo == "decred") $mbtcmhday_last24h /= 1000; // special case for nicehash sha256
+    if ($pool_name == "yiimp") {
+        switch ($algo) {
+            case 'decred':
+            case 'blake';
+            case 'blake2s':
+            case 'skein':
+                $mbtcmhday_current /= 1000;
+                $mbtcmhday_last24h /= 1000;
+                break;
+        }
+    }
     foreach ($gfxcards as $card => $rates) {
         $khs = get_hashrate($card, $algo);
         if (!isset($khs)) continue;
         $mhs = $khs / 1000;
-        $mbtcday = $mhs * $mbtcmhday;
-        deduct_fee($mbtcday, $fee);
+        $mbtcday_current = $mhs * $mbtcmhday_current;
+        $mbtcday_last24h = $mhs * $mbtcmhday_last24h;
+        deduct_fee($mbtcday_current, $fee);
+        deduct_fee($mbtcday_last24h, $fee);
         $profit[$card]["$algo.$pool_name"] = array(
-            'algo'        => $algo,
-            'mBTC/Day'    => $mbtcday,
-            'pool'        => $pool_name,
-            'mBTC/MH/Day' => $mbtcmhday,
+            'algo'                => $algo,
+            'pool'                => $pool_name,
+            'mBTC/Day current'    => $mbtcday_current,
+            'mBTC/MH/Day current' => $mbtcmhday_current,
+            'mBTC/Day last24h'    => $mbtcday_last24h,
+            'mBTC/MH/Day last24h' => $mbtcmhday_last24h,
         );
     }
 }
 
-handle_pool("zpool",     0, '', 'actual_last24h');
-handle_pool("hashpower", 2, '', 'actual_last24h', 1000);
-handle_pool("yiimp",     0, '', 'actual_last24h', 1000);
-handle_pool("nicehash",  3, 'name', 'paying');
-handle_pool("wepaybtc",  0, 'name', 'paying', 1000);
-handle_pool("mph",     0.3, 'algo', 'profit');
+handle_pool("zpool",     0, '', 'estimate_current', 1000, 'actual_last24h', 1);
+handle_pool("hashpower", 2, '', 'estimate_current', 1000, 'actual_last24h', 1000);
+handle_pool("yiimp",     0, '', 'estimate_current', 1000, 'estimate_last24h', 1000);
+handle_pool("nicehash",  3, 'name', 'paying', 1,    NULL, 1);
+handle_pool("wepaybtc",  0, 'name', 'paying', 1000, NULL, 1);
+handle_pool("mph",     0.3, 'algo', 'profit', 1,    NULL, 1);
 
-handle_algo("dashminer",    "x11",    $dashminer_data['btcpermhs'],        0, 1000);
-handle_algo("themultipool", "x11",    floatval($themultipool_x11_data),    1, 1000);
-handle_algo("themultipool", "sha256", floatval($themultipool_sha256_data), 1);
-handle_algo("themultipool", "scrypt", floatval($themultipool_scrypt_data), 1, 1000);
+handle_algo("dashminer",    "x11",    $dashminer_data['btcpermhs'],        0, 1000, NULL, 1);
+handle_algo("themultipool", "x11",    floatval($themultipool_x11_data),    1, 1000, NULL, 1);
+handle_algo("themultipool", "sha256", floatval($themultipool_sha256_data), 1, 1, NULL, 1);
+handle_algo("themultipool", "scrypt", floatval($themultipool_scrypt_data), 1, 1000, NULL, 1);
 
 function profitrate_cmp($a, $b) {
-    $left = $a["mBTC/Day"];
-    $right = $b["mBTC/Day"];
+    $left = $a["mBTC/Day current"];
+    $right = $b["mBTC/Day current"];
     if ($left == $right) return 0;
     return ($left > $right) ? -1 : 1;
 }
@@ -333,26 +353,42 @@ foreach ($profit as $card => $entries) {
             data-toggle="table" data-sort-name="USD_day" data-sort-order="desc"
             data-search="true">';
     print '<thead><tr>';
-    print_th_right("Algorithm");
+    print_th_right("Algo");
     print_th("Pool");
-    print_th_right("m฿/day", 'hidden-xs-down');
-    print_th("$/day");
-    print_th_right('m฿/MH/day', 'hidden-xs-down');
+    // print_th_right("m฿/day", 'hidden-xs-down');
+    print_th_right("$/day now");
+    print_th("$/day 24h");
+    print_th_right('m฿/MH/day now', 'hidden-xs-down');
+    print_th('m฿/MH/day 24h', 'hidden-xs-down');
     print_th_right("Hashrate", 'hidden-xs-down');
     print '</tr></thead>';
     print '<tbody>';
     foreach ($entries as $entry) {
-        $mbtcday = $entry['mBTC/Day'];
-        if (!$mbtcday) continue;
-        $usdrate = ($mbtcday/1000.) * $usd_data['vwap'];
+        $mbtcday_current = $entry['mBTC/Day current'];
+        $usdrate_current = ($mbtcday_current/1000.) * $usd_data['vwap'];
+        $mbtcday_last24h = $entry['mBTC/Day last24h'];
+        $usdrate_last24h = ($mbtcday_last24h/1000.) * $usd_data['vwap'];
+        $mbtcmhday_current = $entry['mBTC/MH/Day current'];
+        $mbtcmhday_last24 = $entry['mBTC/MH/Day last24h'];
+
         $algo = fix_hashname($entry['algo']);
         $khs = $gfxcards[$card][$algo];
         print '<tr>';
         print_td_right($algo);
         print_td($entry['pool']);
-        print_td_right(sprintf('%.2f', $mbtcday), 'hidden-xs-down');
-        print_td(sprintf('%.2f', $usdrate));
-        print_td_right(sprintf('%.4f', $entry['mBTC/MH/Day']), 'hidden-xs-down');
+        print_td_right(sprintf('%.2f', $usdrate_current));
+        if ($usdrate_last24h == 0) {
+            print_td("-");
+        } else {
+            print_td(sprintf('%.2f', $usdrate_last24h));
+        }
+        print_td_right(sprintf('%.2f', $mbtcmhday_current), 'hidden-xs-down');
+        if ($mbtcmhday_last24 == 0) {
+            print_td("-");
+        } else {
+            print_td(sprintf('%.2f', $mbtcmhday_last24), 'hidden-xs-down');
+        }
+        // print_td_right(sprintf('%.4f', $entry['mBTC/MH/Day']), 'hidden-xs-down');
         print_td_right(sprintf('%.2f MH', $khs/1000), 'hidden-xs-down');
         print '</tr>';
     }
@@ -375,6 +411,7 @@ function printer($name) {
 // printer("zpool");
 // printer("nicehash");
 // printer("hashpower");
+// printer("mph");
 // printer("usd");
 // printer("dashminer");
 // printer("wepaybtc");
