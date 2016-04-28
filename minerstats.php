@@ -369,8 +369,15 @@ function handle_algo($pool_name, $algo, $payrate_current, $fee, $payrate_current
     $mbtcmhday_last24h = $payrate_last24h * $payrate_last24h_multiplier;
     if ($pool_name == "nicehash" && $algo == "sha256") $mbtcmhday_current *= 1000; // special case for nicehash sha256
     if ($pool_name == "nicehash" && $algo == "sha256") $mbtcmhday_last24h *= 1000; // special case for nicehash sha256
-    if ($pool_name == "zpool" && $algo == "decred") $mbtcmhday_current /= 1000; // special case for nicehash sha256
-    if ($pool_name == "zpool" && $algo == "decred") $mbtcmhday_last24h /= 1000; // special case for nicehash sha256
+    if ($pool_name == "zpool") {
+        switch ($algo) {
+        case 'blakecoin':
+        case 'decred':
+            $mbtcmhday_current /= 1000;
+            $mbtcmhday_last24h /= 1000;
+            break;
+        }
+    }
     if ($pool_name == "yiimp") {
         switch ($algo) {
             case 'decred':
