@@ -447,9 +447,10 @@ print '<ul class="nav nav-pills small" id="cardlist" role="tablist">';
 foreach ($profit as $card => $entries) {
     print '<a class="nav-item nav-link ' . say_active($said_active) . '" data-toggle="tab" href="#' . card_to_anchor($card) . '" role="tab">';
     $card_html = htmlspecialchars($card, ENT_HTML5);
-    $card_html = str_replace("CPU", '<span class="label label-default">CPU</span>', $card_html);
+    $card_html = str_replace("CPU", '<span class="label label-info">CPU</span>', $card_html);
     $card_html = str_replace("VPS", '<span class="label label-default">VPS</span>', $card_html);
-    $card_html = str_replace("GPU", '<span class="label label-default">GPU</span>', $card_html);
+    $card_html = str_replace("GPU", '<span class="label label-primary">GPU</span>', $card_html);
+    $card_html = str_replace("OC", '<span class="label label-danger">OC</span>', $card_html);
     print "$card_html";
     print "</a>";
 }
@@ -475,11 +476,11 @@ foreach ($profit as $card => $entries) {
     print_th_right("Algo");
     print_th("Pool");
     // print_th_right("m฿/day", 'hidden-xs-down');
-    print_th_right("$/day now");
-    print_th("$/day 24h");
-    print_th_right('m฿/MH/day now', 'hidden-xs-down');
-    print_th('m฿/MH/day 24h', 'hidden-xs-down');
-    print_th_right("Hashrate", 'hidden-xs-down');
+    print_th_right("$ now");
+    print_th("$ last24h");
+    print_th_right('payrate', 'hidden-xs-down');
+    print_th('payrateavg', 'hidden-xs-down');
+    print_th_right("MH/s", 'hidden-xs-down');
     print '</tr></thead>';
     print '<tbody>';
     foreach ($entries as $entry) {
@@ -501,14 +502,17 @@ foreach ($profit as $card => $entries) {
         } else {
             print_td(sprintf('%.2f', $usdrate_last24h));
         }
-        print_td_right(sprintf('%.2f', $mbtcmhday_current), 'hidden-xs-down');
+        // payrate
+        print_td_right(sprintf('%.4f', $mbtcmhday_current), 'hidden-xs-down');
         if ($mbtcmhday_last24 == 0) {
             print_td("-");
         } else {
-            print_td(sprintf('%.2f', $mbtcmhday_last24), 'hidden-xs-down');
+            print_td(sprintf('%.4f', $mbtcmhday_last24), 'hidden-xs-down');
         }
         // print_td_right(sprintf('%.4f', $entry['mBTC/MH/Day']), 'hidden-xs-down');
-        print_td_right(sprintf('%.2f MH', $khs/1000), 'hidden-xs-down');
+
+        // hashing speed
+        print_td_right(sprintf('%.2f', $khs/1000), 'hidden-xs-down');
         print '</tr>';
     }
 
