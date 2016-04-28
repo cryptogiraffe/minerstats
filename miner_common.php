@@ -397,10 +397,10 @@ function profitrate_cmp($a, $b) {
 }
 
 function card_to_anchor($card) {
-    $card = str_replace(' ', '', $card);
+    $card = str_replace(' ', '_', $card);
     $card = str_replace('.', '', $card);
     $card = str_replace('$', '', $card);
     $card = str_replace('/', '', $card);
-    return htmlentities($card);
+    return htmlentities(strtolower($card));
 }
 
