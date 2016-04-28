@@ -356,7 +356,7 @@ function handle_pool($pool_name, $extra_fee, $algo_name, $payrate_current_name, 
         }
         $fee = $extra_fee;
         if (isset($entry['fees'])) $fee += $entry['fees'];
-        if (isset($entry['workers']) && $entry['workers'] <= 0) continue;
+        // if (isset($entry['workers']) && $entry['workers'] <= 0) continue;
         handle_algo($pool_name, $algo, $payrate_current, $fee, $payrate_current_multiplier, $payrate_last24h, $payrate_last24h_multiplier);
     }
 }
