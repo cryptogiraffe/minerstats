@@ -324,13 +324,13 @@ $hashpower_data = url_to_array_cached("http://hashpower.co/api/status", "hashpow
 $yiimp_data     = url_to_array_cached("http://yiimp.ccminer.org/api/status", "yiimp_data");
 $nicehash_data  = url_to_array_cached("https://www.nicehash.com/api?method=simplemultialgo.info", "nicehash_data")['result']['simplemultialgo'];
 $usd_data       = url_to_array_cached("https://www.bitstamp.net/api/ticker/", "usd_data");
-$dashminer_data = url_to_array_cached("http://dashminer.com/payouts.json", "dashminer_data");
-$wepaybtc_data  = url_to_array_cached("http://wepaybtc.com/payouts.json", "wepaybtc_data");
+//$dashminer_data = url_to_array_cached("http://dashminer.com/payouts.json", "dashminer_data");
+//$wepaybtc_data  = url_to_array_cached("http://wepaybtc.com/payouts.json", "wepaybtc_data");
 $mph_data =       url_to_array_cached("https://miningpoolhub.com/index.php?page=api&action=getautoswitchingandprofitsstatistics", "mph_data")['return'];
 
-$themultipool_x11_data    = url_cached("http://themultipool.com/static/x11_profit.txt",    "themultipool_x11_data");
-$themultipool_scrypt_data = url_cached("http://themultipool.com/static/scrypt_profit.txt", "themultipool_scrypt_data");
-$themultipool_sha256_data = url_cached("http://themultipool.com/static/sha256_profit.txt", "themultipool_sha256_data");
+//$themultipool_x11_data    = url_cached("http://themultipool.com/static/x11_profit.txt",    "themultipool_x11_data");
+//$themultipool_scrypt_data = url_cached("http://themultipool.com/static/scrypt_profit.txt", "themultipool_scrypt_data");
+//$themultipool_sha256_data = url_cached("http://themultipool.com/static/sha256_profit.txt", "themultipool_sha256_data");
 
 $yiimp_data = str_replace(": ,", ": 0,", $yiimp_data);
 
@@ -412,13 +412,13 @@ handle_pool("zpool",     0, '', 'estimate_current', 1000, 'actual_last24h', 1);
 handle_pool("hashpower", 2, '', 'estimate_current', 1000, 'actual_last24h', 1000);
 handle_pool("yiimp",     0, '', 'estimate_current', 1000, 'estimate_last24h', 1000);
 handle_pool("nicehash",  3, 'name', 'paying', 1,    NULL, 1);
-handle_pool("wepaybtc",  0, 'name', 'paying', 1000, NULL, 1);
+//handle_pool("wepaybtc",  0, 'name', 'paying', 1000, NULL, 1);
 handle_pool("mph",     0.3, 'algo', 'profit', 1,    NULL, 1);
 
-handle_algo("dashminer",    "x11",    $dashminer_data['btcpermhs'],        0, 1000, NULL, 1);
-handle_algo("themultipool", "x11",    floatval($themultipool_x11_data),    1, 1000, NULL, 1);
-handle_algo("themultipool", "sha256", floatval($themultipool_sha256_data), 1, 1, NULL, 1);
-handle_algo("themultipool", "scrypt", floatval($themultipool_scrypt_data), 1, 1000, NULL, 1);
+//handle_algo("dashminer",    "x11",    $dashminer_data['btcpermhs'],        0, 1000, NULL, 1);
+//handle_algo("themultipool", "x11",    floatval($themultipool_x11_data),    1, 1000, NULL, 1);
+//handle_algo("themultipool", "sha256", floatval($themultipool_sha256_data), 1, 1, NULL, 1);
+//handle_algo("themultipool", "scrypt", floatval($themultipool_scrypt_data), 1, 1000, NULL, 1);
 
 function profitrate_cmp($a, $b) {
     $left = $a["mBTC/Day current"];
