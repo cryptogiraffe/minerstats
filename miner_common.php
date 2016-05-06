@@ -135,45 +135,45 @@ $gfxcards = array(
     "yescrypt"    =>   1.61,
   ),
   'CPU i7 4770 OC' => array( // 104x39 -- 4056MHz vs stock 3900MHz
-    "anime"       => 607877 / 1000,
-    "argon2"      => 29551 / 1000, // cpuminer-opt
+    "anime"       =>   607877 / 1000,
+    "argon2"      =>    29551 / 1000, // cpuminer-opt
     "blake"       => 21100403 / 1000,
     "blake2s"     => 17088083 / 1000,
     "blakecoin"   => 29765247 / 1000,
-    "bmw"         => 9741833 / 1000,
-    "c11"         => 706.74, // cpuminer-opt
-    "cryptonight" => 200 / 1000, // cpuminer-opt
+    "bmw"         =>  9741833 / 1000,
+    "c11"         =>   706740 / 1000, // cpuminer-opt
+    "cryptonight" =>      200 / 1000, // cpuminer-opt
     "decred"      => 21053593 / 1000, // cpuminer-opt
-    "dmd-gr"      => 1121266 / 1000,
-    "drop"        => 30984 / 1000,
-    "fresh"       => 506625 / 1000,
-    "groestl"     => 1118556 / 1000,
-    "keccak"      => 8402648 / 1000,
-    "luffa"       => 3161042 / 1000,
-    "lyra2"       => 936413 / 1000,
-    "lyra2v2"     => 466049 / 1000,
-    "myr-gr"      => 3394.48, // cpuminer-opt
-    "neoscrypt"   => 28747 / 1000,
-    "nist5"       => 1885.70, // cpuminer-opt
-    "pentablake"  => 3708888 / 1000,
-    "pluck"       => 1838 / 1000,
-    "quark"       => 1100.29, // cpuminer-opt
-    "qubit"       => 1033.30, // cpuminer-opt
-    "s3"          => 1222257 / 1000,
-    "scrypt"      => 100370 / 1000,
-    "scrypt-jane" => 226 / 1000,
+    "dmd-gr"      =>  1121266 / 1000,
+    "drop"        =>    30984 / 1000,
+    "fresh"       =>   506625 / 1000,
+    "groestl"     =>  1118556 / 1000,
+    "keccak"      =>  8402648 / 1000,
+    "luffa"       =>  3161042 / 1000,
+    "lyra2"       =>   936413 / 1000,
+    "lyra2v2"     =>   466049 / 1000,
+    "myr-gr"      =>  3394480 / 1000, // cpuminer-opt
+    "neoscrypt"   =>    28747 / 1000,
+    "nist5"       =>  1885700 / 1000, // cpuminer-opt
+    "pentablake"  =>  3708888 / 1000,
+    "pluck"       =>     1838 / 1000,
+    "quark"       =>  1100290 / 1000, // cpuminer-opt
+    "qubit"       =>  1033300 / 1000, // cpuminer-opt
+    "s3"          =>  1222257 / 1000,
+    "scrypt"      =>   100370 / 1000,
+    "scrypt-jane" =>      226 / 1000,
     "sha256d"     => 55760032 / 1000,
-    "shavite3"    => 2385939 / 1000,
-    "sib"         => 487.05, // cpuminer-opt
-    "skein"       => 6646851 / 1000,
-    "skein2"      => 8396332 / 1000,
-    "x11"         => 704586 / 1000, // cpuminer-opt
-    "x13"         => 276196 / 1000, // cpuminer-opt
-    "x14"         => 318383 / 1000, // cpuminer-opt
-    "x15"         => 293850 / 1000, // cpuminer-opt
-    "x17"         => 279510 / 1000, // cpuminer-opt
-    "yescrypt"    => 3194 / 1000, // cpuminer-opt
-    "zr5"         => 795.73, // cpuminer-opt
+    "shavite3"    =>  2385939 / 1000,
+    "sib"         =>   487050 / 1000, // cpuminer-opt
+    "skein"       =>  6646851 / 1000,
+    "skein2"      =>  8396332 / 1000,
+    "x11"         =>   704586 / 1000, // cpuminer-opt
+    "x13"         =>   276196 / 1000, // cpuminer-opt
+    "x14"         =>   318383 / 1000, // cpuminer-opt
+    "x15"         =>   293850 / 1000, // cpuminer-opt
+    "x17"         =>   279510 / 1000, // cpuminer-opt
+    "yescrypt"    =>     3194 / 1000, // cpuminer-opt
+    "zr5"         =>   795730 / 1000, // cpuminer-opt
   ),
   'CPU i7 2600K' => array(
     "lyra2"       => 485.850, // nicehash default
@@ -197,93 +197,45 @@ $gfxcards = array(
   ),
   'CPU i5 4570S' => array(
     "anime"         =>     432956 / 1000, // cpuminer
-// argon2 did not work on cpuminer
-// axiom did not work on cpuminer
-// bastion did not work on cpuminer
-    "blake"         =>   14724947 / 1000, // cpuminer
-// blake256r8vnl did not work on cpuminer
-    "blake2s"       =>   10152210 / 1000, // cpuminer
-    "blakecoin"     =>   20391972 / 1000, // cpuminer
-    "bmw"           =>    7487587 / 1000, // cpuminer
-    "c11"           =>     186215 / 1000, // cpuminer
-// cryptolight did not work on cpuminer
-    "cryptonight"   =>         88 / 1000, // cpuminer
-// decred did not work on cpuminer
-    "dmd-gr"        =>     770041 / 1000, // cpuminer
-    "drop"          =>      21317 / 1000, // cpuminer
-    "fresh"         =>     343444 / 1000, // cpuminer
-    "groestl"       =>     780171 / 1000, // cpuminer
-    "heavy"         =>     136306 / 1000, // cpuminer
-// hodl did not work on cpuminer
-    "keccak"        =>    5856757 / 1000, // cpuminer
-    "luffa"         =>    2319276 / 1000, // cpuminer
-    "lyra2"         =>     594868 / 1000, // cpuminer
-// lyra2v2 did not work on cpuminer
-    "myr-gr"        =>    1247392 / 1000, // cpuminer
-    "neoscrypt"     =>      14766 / 1000, // cpuminer
-    "nist5"         =>     679022 / 1000, // cpuminer
-    "pentablake"    =>    2524185 / 1000, // cpuminer
-    "pluck"         =>       1242 / 1000, // cpuminer
-    "quark"         =>     421237 / 1000, // cpuminer
-    "qubit"         =>     306782 / 1000, // cpuminer
-    "s3"            =>     816548 / 1000, // cpuminer
-    "scrypt"        =>      60018 / 1000, // cpuminer
-    "scryptjane:16" =>        104 / 1000, // cpuminer
-    "sha256d"       =>   35535485 / 1000, // cpuminer
-    "shavite3"      =>    1608475 / 1000, // cpuminer
-// sib did not work on cpuminer
-    "skein"         =>    4670727 / 1000, // cpuminer
-    "skein2"        =>    5812744 / 1000, // cpuminer
-// vanilla did not work on cpuminer
-    "x11"           =>     191461 / 1000, // cpuminer
-// x11gost did not work on cpuminer
-    "x13"           =>     128845 / 1000, // cpuminer
-    "x14"           =>     119479 / 1000, // cpuminer
-    "x15"           =>     118099 / 1000, // cpuminer
-// x17 did not work on cpuminer
-// yescrypt did not work on cpuminer
-    "zr5"           =>     304185 / 1000, // cpuminer
-// anime did not work on cpuminer-opt
     "argon2"        =>      16415 / 1000, // cpuminer-opt
     "axiom"         =>         51 / 1000, // cpuminer-opt
     "bastion"       =>     151905 / 1000, // cpuminer-opt
-    "blake"         =>   14125411 / 1000, // cpuminer-opt
+    "blake"         =>   14724947 / 1000, // cpuminer
     "blake256r8vnl" =>   21745525 / 1000, // cpuminer-opt
-    "blake2s"       =>    9948854 / 1000, // cpuminer-opt
+    "blake2s"       =>   10152210 / 1000, // cpuminer
     "blakecoin"     =>   21803021 / 1000, // cpuminer-opt
-// bmw did not work on cpuminer-opt
+    "bmw"           =>    7487587 / 1000, // cpuminer
     "c11"           =>     451745 / 1000, // cpuminer-opt
     "cryptolight"   =>        329 / 1000, // cpuminer-opt
     "cryptonight"   =>         96 / 1000, // cpuminer-opt
     "decred"        =>   14805459 / 1000, // cpuminer-opt
     "dmd-gr"        =>    1244444 / 1000, // cpuminer-opt
     "drop"          =>    1400000 / 1000, // cpuminer-opt
-    "fresh"         =>     313131 / 1000, // cpuminer-opt
+    "fresh"         =>     343444 / 1000, // cpuminer
     "groestl"       =>    1466666 / 1000, // cpuminer-opt
-// heavy did not work on cpuminer-opt
+    "heavy"         =>     136306 / 1000, // cpuminer
     "hodl"          =>         93 / 1000, // cpuminer-opt
-    "keccak"        =>    3403280 / 1000, // cpuminer-opt
+    "keccak"        =>    5856757 / 1000, // cpuminer
     "luffa"         =>    4333333 / 1000, // cpuminer-opt
-    "lyra2"         =>     559066 / 1000, // cpuminer-opt
+    "lyra2"         =>     594868 / 1000, // cpuminer
     "lyra2v2"       =>     584313 / 1000, // cpuminer-opt
     "myr-gr"        =>    2795742 / 1000, // cpuminer-opt
-    "neoscrypt"     =>      14596 / 1000, // cpuminer-opt
+    "neoscrypt"     =>      14766 / 1000, // cpuminer
     "nist5"         =>    1133144 / 1000, // cpuminer-opt
     "pentablake"    =>    2530458 / 1000, // cpuminer-opt
-    "pluck"         =>       1236 / 1000, // cpuminer-opt
+    "pluck"         =>       1242 / 1000, // cpuminer
     "quark"         =>     634523 / 1000, // cpuminer-opt
     "qubit"         =>     576190 / 1000, // cpuminer-opt
-    "s3"            =>     733333 / 1000, // cpuminer-opt
+    "s3"            =>     816548 / 1000, // cpuminer
     "scrypt"        =>      60807 / 1000, // cpuminer-opt
-    "scryptjane:16" =>         99 / 1000, // cpuminer-opt
-    "sha256d"       =>    9999999 / 1000, // cpuminer-opt
-    "shavite3"      =>    1499999 / 1000, // cpuminer-opt
-    "sib"           =>     521008 / 1000, // cpuminer-opt
-    "skein"         =>    4649141 / 1000, // cpuminer-opt
-    "skein2"        =>    5698144 / 1000, // cpuminer-opt
+    "scryptjane:16" =>        104 / 1000, // cpuminer
+    "sha256d"       =>   35535485 / 1000, // cpuminer
+    "shavite3"      =>    1608475 / 1000, // cpuminer
+    "sib"           =>     558672 / 1000, // cpuminer-opt
+    "skein"         =>    4670727 / 1000, // cpuminer
+    "skein2"        =>    5812744 / 1000, // cpuminer
     "vanilla"       =>   21663889 / 1000, // cpuminer-opt
     "x11"           =>     453805 / 1000, // cpuminer-opt
-    "x11gost"       =>     558672 / 1000, // cpuminer-opt
     "x13"           =>     185492 / 1000, // cpuminer-opt
     "x14"           =>     215004 / 1000, // cpuminer-opt
     "x15"           =>     158682 / 1000, // cpuminer-opt
@@ -292,286 +244,139 @@ $gfxcards = array(
     "zr5"           =>     493225 / 1000, // cpuminer-opt
   ),
   'VPS scaleway $3/mo' => array(
-    "anime"       => 36858 / 1000,
-// argon2 did not work on cpuminer
-// axiom did not work on cpuminer
-// bastion did not work on cpuminer
-    "blake"       => 2482639 / 1000,
-// blake256r8vnl did not work on cpuminer
-    "blake2s"     => 1828271 / 1000,
-    "blakecoin"   => 3622492 / 1000,
-    "bmw"         => 1420312 / 1000,
-    "c11"         => 20972 / 1000,
-// cryptolight did not work on cpuminer
-    "cryptonight" => 17 / 1000,
-// decred did not work on cpuminer
-    "dmd-gr"      => 161384 / 1000,
-    "drop"        => 2549 / 1000,
-    "fresh"       => 40995 / 1000,
-    "groestl"     => 162026 / 1000,
-    "heavy"       => 0 / 1000,
-// hodl did not work on cpuminer
-    "keccak"      => 1123433 / 1000,
-    "luffa"       => 368181 / 1000,
-    "lyra2"       => 90593 / 1000,
-// lyra2v2 did not work on cpuminer
-    "myr-gr"      => 227248 / 1000,
-    "neoscrypt"   => 4208 / 1000,
-    "nist5"       => 55871 / 1000,
-    "pentablake"  => 453293 / 1000,
-    "pluck"       => 178 / 1000,
-    "quark"       => 37027 / 1000,
-    "qubit"       => 37801 / 1000,
-    "s3"          => 89453 / 1000,
-    "scrypt"      => 6606 / 1000,
-    "scryptjane:16" => 28 / 1000,
-    "sha256d"     => 3963772 / 1000,
-    "shavite3"    => 350843 / 1000,
-// sib did not work on cpuminer
-    "skein"       => 782438 / 1000,
-    "skein2"      => 912120 / 1000,
-// vanilla did not work on cpuminer
-    "x11"         => 20875 / 1000,
-// x11gost did not work on cpuminer
-    "x13"         => 15151 / 1000,
-    "x14"         => 14152 / 1000,
-    "x15"         => 13525 / 1000,
-// x17 did not work on cpuminer
-// yescrypt did not work on cpuminer
-    "zr5"         => 0 / 1000,
-// anime did not work on cpuminer-opt
-    "argon2"      => 1554 / 1000,
-    "axiom"       => 10 / 1000,
-    "bastion"     => 26224 / 1000,
-    "blake"       => 2376233 / 1000,
-    "blake256r8vnl" => 3425501 / 1000,
-    "blake2s"     => 1645596 / 1000,
-    "blakecoin"   => 3539842 / 1000,
-// bmw did not work on cpuminer-opt
-    "c11"         => 68983 / 1000,
-    "cryptolight" => 48 / 1000,
-    "cryptonight" => 17 / 1000,
-    "decred"      => 2473667 / 1000,
-    "dmd-gr"      => 122142 / 1000,
-    "drop"        => 74754 / 1000,
-    "fresh"       => 38838 / 1000,
-    "groestl"     => 208556 / 1000,
-// heavy did not work on cpuminer-opt
-    "hodl"        => 25 / 1000,
-    "keccak"      => 500000 / 1000,
-    "luffa"       => 472222 / 1000,
-    "lyra2"       => 74736 / 1000,
-    "lyra2v2"     => 55569 / 1000,
-    "myr-gr"      => 348484 / 1000,
-    "neoscrypt"   => 4207 / 1000,
-    "nist5"       => 150233 / 1000,
-    "pentablake"  => 448665 / 1000,
-    "pluck"       => 175 / 1000,
-    "quark"       => 90908 / 1000,
-    "qubit"       => 71650 / 1000,
-    "s3"          => 85367 / 1000,
-    "scrypt"      => 6415 / 1000,
-    "scryptjane:16" => 26 / 1000,
-    "sha256d"     => 552380 / 1000,
-    "shavite3"    => 174242 / 1000,
-    "sib"         => 54505 / 1000,
-    "skein"       => 758710 / 1000,
-    "skein2"      => 900437 / 1000,
-    "vanilla"     => 3536958 / 1000,
-    "x11"         => 48104 / 1000,
-    "x11gost"     => 50186 / 1000,
-    "x13"         => 20694 / 1000,
-    "x14"         => 24197 / 1000,
-    "x15"         => 18847 / 1000,
-    "x17"         => 12981 / 1000,
-    "yescrypt"    => 301 / 1000,
-    "zr5"         => 69081 / 1000,
+    "anime"         =>   36858 / 1000, // cpuminer-nicehash
+    "argon2"        =>    1554 / 1000, // cpuminer-opt
+    "axiom"         =>      10 / 1000, // cpuminer-opt
+    "bastion"       =>   26224 / 1000, // cpuminer-opt
+    "blake"         => 2482639 / 1000, // cpuminer-nicehash
+    "blake256r8vnl" => 3425501 / 1000, // cpuminer-opt
+    "blake2s"       => 1828271 / 1000, // cpuminer-nicehash
+    "blakecoin"     => 3622492 / 1000, // cpuminer-nicehash
+    "bmw"           => 1420312 / 1000, // cpuminer-nicehash
+    "c11"           =>   68983 / 1000, // cpuminer-opt
+    "cryptolight"   =>      48 / 1000, // cpuminer-opt
+    "cryptonight"   =>      17 / 1000, // cpuminer-opt
+    "decred"        => 2473667 / 1000, // cpuminer-opt
+    "dmd-gr"        =>  161384 / 1000, // cpuminer-nicehash
+    "drop"          =>   74754 / 1000, // cpuminer-opt
+    "fresh"         =>   40995 / 1000, // cpuminer-nicehash
+    "groestl"       =>  208556 / 1000, // cpuminer-opt
+    "hodl"          =>      25 / 1000, // cpuminer-opt
+    "keccak"        => 1123433 / 1000, // cpuminer-nicehash
+    "luffa"         =>  472222 / 1000, // cpuminer-opt
+    "lyra2"         =>   90593 / 1000, // cpuminer-nicehash
+    "lyra2v2"       =>   55569 / 1000, // cpuminer-opt
+    "myr-gr"        =>  348484 / 1000, // cpuminer-opt
+    "neoscrypt"     =>    4208 / 1000, // cpuminer-nicehash
+    "nist5"         =>  150233 / 1000, // cpuminer-opt
+    "pentablake"    =>  453293 / 1000, // cpuminer-nicehash
+    "pluck"         =>     178 / 1000, // cpuminer-nicehash
+    "quark"         =>   90908 / 1000, // cpuminer-opt
+    "qubit"         =>   71650 / 1000, // cpuminer-opt
+    "s3"            =>   89453 / 1000, // cpuminer-nicehash
+    "scrypt"        =>    6606 / 1000, // cpuminer-nicehash
+    "scryptjane:16" =>      28 / 1000, // cpuminer-nicehash
+    "sha256d"       => 3963772 / 1000, // cpuminer-nicehash
+    "shavite3"      =>  350843 / 1000, // cpuminer-nicehash
+    "sib"           =>   54505 / 1000, // cpuminer-opt
+    "skein"         =>  782438 / 1000, // cpuminer-nicehash
+    "skein2"        =>  912120 / 1000, // cpuminer-nicehash
+    "vanilla"       => 3536958 / 1000, // cpuminer-opt
+    "x11"           =>   48104 / 1000, // cpuminer-opt
+    "x13"           =>   20694 / 1000, // cpuminer-opt
+    "x14"           =>   24197 / 1000, // cpuminer-opt
+    "x15"           =>   18847 / 1000, // cpuminer-opt
+    "x17"           =>   12981 / 1000, // cpuminer-opt
+    "yescrypt"      =>     301 / 1000, // cpuminer-opt
+    "zr5"           =>   69081 / 1000, // cpuminer-opt
   ),
   'VPS digitalocean $5/mo' => array(
-    "anime"       => 78185 / 1000,
-// argon2 did not work on cpuminer
-// axiom did not work on cpuminer
-// bastion did not work on cpuminer
-    "blake"       => 2684402 / 1000,
-// blake256r8vnl did not work on cpuminer
-    "blake2s"     => 1817314 / 1000,
-    "blakecoin"   => 3096926 / 1000,
-    "bmw"         => 1148620 / 1000,
-    "c11"         => 34820 / 1000,
-// cryptolight did not work on cpuminer
-    "cryptonight" => 22 / 1000,
-// decred did not work on cpuminer
-    "dmd-gr"      => 143185 / 1000,
-    "drop"        => 3411 / 1000,
-    "fresh"       => 64683 / 1000,
-    "groestl"     => 141483 / 1000,
-    "heavy"       => 22001 / 1000,
-// hodl did not work on cpuminer
-    "keccak"      => 969605 / 1000,
-    "luffa"       => 394365 / 1000,
-    "lyra2"       => 110630 / 1000,
-// lyra2v2 did not work on cpuminer
-    "myr-gr"      => 233085 / 1000,
-    "neoscrypt"   => 2374 / 1000,
-    "nist5"       => 122283 / 1000,
-    "pentablake"  => 434750 / 1000,
-    "pluck"       => 217 / 1000,
-    "quark"       => 76187 / 1000,
-    "qubit"       => 53300 / 1000,
-    "s3"          => 149726 / 1000,
-    "scrypt"      => 10813 / 1000,
-    "scryptjane:16" => 18 / 1000,
-    "sha256d"     => 6791779 / 1000,
-    "shavite3"    => 302408 / 1000,
-// sib did not work on cpuminer
-    "skein"       => 800905 / 1000,
-    "skein2"      => 1037848 / 1000,
-// vanilla did not work on cpuminer
-    "x11"         => 33312 / 1000,
-// x11gost did not work on cpuminer
-    "x13"         => 21461 / 1000,
-    "x14"         => 19889 / 1000,
-    "x15"         => 19544 / 1000,
-// x17 did not work on cpuminer
-// yescrypt did not work on cpuminer
-    "zr5"         => 54630 / 1000,
-// anime did not work on cpuminer-opt
-    "argon2"      => 2847 / 1000,
-    "axiom"       => 9 / 1000,
-    "bastion"     => 24096 / 1000,
-    "blake"       => 2351320 / 1000,
-    "blake256r8vnl" => 3898254 / 1000,
-    "blake2s"     => 1758647 / 1000,
-    "blakecoin"   => 3958683 / 1000,
-// bmw did not work on cpuminer-opt
-    "c11"         => 133333 / 1000,
-    "cryptolight" => 51 / 1000,
-    "cryptonight" => 29 / 1000,
-    "decred"      => 2482863 / 1000,
-    "dmd-gr"      => 250000 / 1000,
-    "drop"        => 117647 / 1000,
-    "fresh"       => 60037 / 1000,
-    "groestl"     => 105263 / 1000,
-// heavy did not work on cpuminer-opt
-// hodl did not work on cpuminer-opt
-    "keccak"      => 500000 / 1000,
-    "luffa"       => 666666 / 1000,
-    "lyra2"       => 98709 / 1000,
-    "lyra2v2"     => 111111 / 1000,
-    "myr-gr"      => 666666 / 1000,
-    "neoscrypt"   => 2341 / 1000,
-    "nist5"       => 111111 / 1000,
-    "pentablake"  => 456932 / 1000,
-    "pluck"       => 190 / 1000,
-    "quark"       => 125000 / 1000,
-    "qubit"       => 34482 / 1000,
-    "s3"          => 125000 / 1000,
-    "scrypt"      => 10583 / 1000,
-    "scryptjane:16" => 18 / 1000,
-    "sha256d"     => 2000000 / 1000,
-    "shavite3"    => 250000 / 1000,
-    "sib"         => 62500 / 1000,
-    "skein"       => 847720 / 1000,
-    "skein2"      => 1012418 / 1000,
-    "vanilla"     => 3881084 / 1000,
-    "x11"         => 83177 / 1000,
-    "x11gost"     => 51282 / 1000,
-    "x13"         => 24390 / 1000,
-    "x14"         => 35577 / 1000,
-    "x15"         => 13698 / 1000,
-    "x17"         => 27027 / 1000,
-    "yescrypt"    => 407 / 1000,
-    "zr5"         => 88947 / 1000,
+    "anime"         =>   78185 / 1000, // cpuminer-nicehash
+    "argon2"        =>    2847 / 1000, // cpuminer-opt
+    "axiom"         =>       9 / 1000, // cpuminer-opt
+    "bastion"       =>   24096 / 1000, // cpuminer-opt
+    "blake"         => 2684402 / 1000, // cpuminer-nicehash
+    "blake256r8vnl" => 3898254 / 1000, // cpuminer-opt
+    "blake2s"       => 1817314 / 1000, // cpuminer-nicehash
+    "blakecoin"     => 3958683 / 1000, // cpuminer-opt
+    "bmw"           => 1148620 / 1000, // cpuminer-nicehash
+    "c11"           =>  133333 / 1000, // cpuminer-opt
+    "cryptolight"   =>      51 / 1000, // cpuminer-opt
+    "cryptonight"   =>      29 / 1000, // cpuminer-opt
+    "decred"        => 2482863 / 1000, // cpuminer-opt
+    "dmd-gr"        =>  250000 / 1000, // cpuminer-opt
+    "drop"          =>  117647 / 1000, // cpuminer-opt
+    "fresh"         =>   64683 / 1000, // cpuminer-nicehash
+    "groestl"       =>  141483 / 1000, // cpuminer-nicehash
+    "heavy"         =>   22001 / 1000, // cpuminer-nicehash
+    "keccak"        =>  969605 / 1000, // cpuminer-nicehash
+    "luffa"         =>  666666 / 1000, // cpuminer-opt
+    "lyra2"         =>  110630 / 1000, // cpuminer-nicehash
+    "lyra2v2"       =>  111111 / 1000, // cpuminer-opt
+    "myr-gr"        =>  666666 / 1000, // cpuminer-opt
+    "neoscrypt"     =>    2374 / 1000, // cpuminer-nicehash
+    "nist5"         =>  122283 / 1000, // cpuminer-nicehash
+    "pentablake"    =>  456932 / 1000, // cpuminer-opt
+    "pluck"         =>     217 / 1000, // cpuminer-nicehash
+    "quark"         =>  125000 / 1000, // cpuminer-opt
+    "qubit"         =>   53300 / 1000, // cpuminer-nicehash
+    "s3"            =>  149726 / 1000, // cpuminer-nicehash
+    "scrypt"        =>   10813 / 1000, // cpuminer-nicehash
+    "scryptjane:16" =>      18 / 1000, // cpuminer-nicehash
+    "sha256d"       => 6791779 / 1000, // cpuminer-nicehash
+    "shavite3"      =>  302408 / 1000, // cpuminer-nicehash
+    "sib"           =>   62500 / 1000, // cpuminer-opt
+    "skein"         =>  847720 / 1000, // cpuminer-opt
+    "skein2"        => 1037848 / 1000, // cpuminer-nicehash
+    "vanilla"       => 3881084 / 1000, // cpuminer-opt
+    "x11"           =>   83177 / 1000, // cpuminer-opt
+    "x13"           =>   24390 / 1000, // cpuminer-opt
+    "x14"           =>   35577 / 1000, // cpuminer-opt
+    "x15"           =>   19544 / 1000, // cpuminer-nicehash
+    "x17"           =>   27027 / 1000, // cpuminer-opt
+    "yescrypt"      =>     407 / 1000, // cpuminer-opt
+    "zr5"           =>   88947 / 1000, // cpuminer-opt
   ),
   'VPS hetzner $5/mo' => array(
     "anime"         =>      55037 / 1000, // cpuminer
-// argon2 did not work on cpuminer
-// axiom did not work on cpuminer
-// bastion did not work on cpuminer
-    "blake"         =>    2525362 / 1000, // cpuminer
-// blake256r8vnl did not work on cpuminer
-    "blake2s"       =>    1774312 / 1000, // cpuminer
-    "blakecoin"     =>    3619948 / 1000, // cpuminer
-    "bmw"           =>    1409118 / 1000, // cpuminer
-    "c11"           =>      27222 / 1000, // cpuminer
-// cryptolight did not work on cpuminer
-    "cryptonight"   =>         25 / 1000, // cpuminer
-// decred did not work on cpuminer
-    "dmd-gr"        =>     150350 / 1000, // cpuminer
-    "drop"          =>       3180 / 1000, // cpuminer
-    "fresh"         =>      53295 / 1000, // cpuminer
-    "groestl"       =>     152799 / 1000, // cpuminer
-    "heavy"         =>      22880 / 1000, // cpuminer
-// hodl did not work on cpuminer
-    "keccak"        =>    1063794 / 1000, // cpuminer
-    "luffa"         =>     378881 / 1000, // cpuminer
-    "lyra2"         =>      93157 / 1000, // cpuminer
-// lyra2v2 did not work on cpuminer
-    "myr-gr"        =>     227295 / 1000, // cpuminer
-    "neoscrypt"     =>       2610 / 1000, // cpuminer
-    "nist5"         =>      86381 / 1000, // cpuminer
-    "pentablake"    =>     441382 / 1000, // cpuminer
-    "pluck"         =>        189 / 1000, // cpuminer
-    "quark"         =>      56000 / 1000, // cpuminer
-    "qubit"         =>      44101 / 1000, // cpuminer
-    "s3"            =>     124007 / 1000, // cpuminer
-    "scrypt"        =>       6805 / 1000, // cpuminer
-    "scryptjane:16" =>         21 / 1000, // cpuminer
-    "sha256d"       =>    3643108 / 1000, // cpuminer
-    "shavite3"      =>     314549 / 1000, // cpuminer
-// sib did not work on cpuminer
-    "skein"         =>     801021 / 1000, // cpuminer
-    "skein2"        =>     929944 / 1000, // cpuminer
-// vanilla did not work on cpuminer
-    "x11"           =>      28291 / 1000, // cpuminer
-// x11gost did not work on cpuminer
-    "x13"           =>      19823 / 1000, // cpuminer
-    "x14"           =>      18522 / 1000, // cpuminer
-    "x15"           =>      18010 / 1000, // cpuminer
-// x17 did not work on cpuminer
-// yescrypt did not work on cpuminer
-    "zr5"           =>      41033 / 1000, // cpuminer
-// anime did not work on cpuminer-opt
     "argon2"        =>       2446 / 1000, // cpuminer-opt
     "axiom"         =>          9 / 1000, // cpuminer-opt
     "bastion"       =>      29411 / 1000, // cpuminer-opt
     "blake"         =>    2533538 / 1000, // cpuminer-opt
     "blake256r8vnl" =>    3749199 / 1000, // cpuminer-opt
-    "blake2s"       =>    1752703 / 1000, // cpuminer-opt
+    "blake2s"       =>    1774312 / 1000, // cpuminer
     "blakecoin"     =>    3785718 / 1000, // cpuminer-opt
-// bmw did not work on cpuminer-opt
+    "bmw"           =>    1409118 / 1000, // cpuminer
     "c11"           =>      58823 / 1000, // cpuminer-opt
     "cryptolight"   =>         57 / 1000, // cpuminer-opt
     "cryptonight"   =>         35 / 1000, // cpuminer-opt
     "decred"        =>    2421765 / 1000, // cpuminer-opt
     "dmd-gr"        =>     250000 / 1000, // cpuminer-opt
     "drop"          =>     142857 / 1000, // cpuminer-opt
-    "fresh"         =>      52631 / 1000, // cpuminer-opt
+    "fresh"         =>      53295 / 1000, // cpuminer
     "groestl"       =>     250000 / 1000, // cpuminer-opt
-// heavy did not work on cpuminer-opt
-// hodl did not work on cpuminer-opt
-    "keccak"        =>     500000 / 1000, // cpuminer-opt
+    "heavy"         =>      22880 / 1000, // cpuminer
+    "keccak"        =>    1063794 / 1000, // cpuminer
     "luffa"         =>     500000 / 1000, // cpuminer-opt
-    "lyra2"         =>      88286 / 1000, // cpuminer-opt
+    "lyra2"         =>      93157 / 1000, // cpuminer
     "lyra2v2"       =>      48780 / 1000, // cpuminer-opt
     "myr-gr"        =>     500000 / 1000, // cpuminer-opt
     "neoscrypt"     =>       2672 / 1000, // cpuminer-opt
     "nist5"         =>     200000 / 1000, // cpuminer-opt
-    "pentablake"    =>     438031 / 1000, // cpuminer-opt
+    "pentablake"    =>     441382 / 1000, // cpuminer
     "pluck"         =>        197 / 1000, // cpuminer-opt
     "quark"         =>     111111 / 1000, // cpuminer-opt
-    "qubit"         =>      34482 / 1000, // cpuminer-opt
-    "s3"            =>     111111 / 1000, // cpuminer-opt
+    "qubit"         =>      44101 / 1000, // cpuminer
+    "s3"            =>     124007 / 1000, // cpuminer
     "scrypt"        =>       7258 / 1000, // cpuminer-opt
-    "scryptjane:16" =>         21 / 1000, // cpuminer-opt
-    "sha256d"       =>     666666 / 1000, // cpuminer-opt
-    "shavite3"      =>     125000 / 1000, // cpuminer-opt
+    "scryptjane:16" =>         21 / 1000, // cpuminer
+    "sha256d"       =>    3643108 / 1000, // cpuminer
+    "shavite3"      =>     314549 / 1000, // cpuminer
     "sib"           =>      86956 / 1000, // cpuminer-opt
-    "skein"         =>     751701 / 1000, // cpuminer-opt
+    "skein"         =>     801021 / 1000, // cpuminer
     "skein2"        =>     952308 / 1000, // cpuminer-opt
     "vanilla"       =>    3831954 / 1000, // cpuminer-opt
     "x11"           =>      71015 / 1000, // cpuminer-opt
-    "x11gost"       =>      76923 / 1000, // cpuminer-opt
     "x13"           =>      33333 / 1000, // cpuminer-opt
     "x14"           =>      34750 / 1000, // cpuminer-opt
     "x15"           =>      20408 / 1000, // cpuminer-opt
@@ -580,193 +385,145 @@ $gfxcards = array(
     "zr5"           =>      94906 / 1000, // cpuminer-opt
   ),
   'VPS vultr $5/mo' => array(
-    "anime"       => 92164 / 1000, // cpuminer
-    "argon2"      => 3413 / 1000, // cpuminer-opt
-    "axiom"       => 10 / 1000, // cpuminer-opt
-    "bastion"     => 29850 / 1000, // cpuminer-opt
-    "blake"       => 3214558 / 1000, // cpuminer
+    "anime"         =>   92164 / 1000, // cpuminer
+    "argon2"        =>    3413 / 1000, // cpuminer-opt
+    "axiom"         =>      10 / 1000, // cpuminer-opt
+    "bastion"       =>   29850 / 1000, // cpuminer-opt
+    "blake"         => 3214558 / 1000, // cpuminer
     "blake256r8vnl" => 4246587 / 1000, // cpuminer-opt
-    "blake2s"     => 2197848 / 1000, // cpuminer
-    "blakecoin"   => 4674923 / 1000, // cpuminer-opt
-    "bmw"         => 1638154 / 1000, // cpuminer
-    "c11"         => 83333 / 1000, // cpuminer-opt
-    "cryptolight" => 62 / 1000, // cpuminer-opt
-    "cryptonight" => 37 / 1000, // cpuminer-opt
-    "decred"      => 3140078 / 1000, // cpuminer-opt
-    "dmd-gr"      => 333333 / 1000, // cpuminer-opt
-    "drop"        => 142857 / 1000, // cpuminer-opt
-    "fresh"       => 74779 / 1000, // cpuminer
-    "groestl"     => 171317 / 1000, // cpuminer
-    "heavy"       => 27594 / 1000, // cpuminer
-    "keccak"      => 1264995 / 1000, // cpuminer
-    "luffa"       => 1000000 / 1000, // cpuminer-opt
-    "lyra2"       => 127302 / 1000, // cpuminer
-    "lyra2v2"     => 80000 / 1000, // cpuminer-opt
-    "myr-gr"      => 1000000 / 1000, // cpuminer-opt
-    "neoscrypt"   => 2906 / 1000, // cpuminer-opt
-    "nist5"       => 333333 / 1000, // cpuminer-opt
-    "pentablake"  => 546505 / 1000, // cpuminer-opt
-    "pluck"       => 258 / 1000, // cpuminer-opt
-    "quark"       => 166666 / 1000, // cpuminer-opt
-    "qubit"       => 142857 / 1000, // cpuminer-opt
-    "s3"          => 179324 / 1000, // cpuminer
-    "scrypt"      => 13992 / 1000, // cpuminer-opt
-    "scryptjane:16" => 23 / 1000, // cpuminer-opt
-    "sha256d"     => 8152796 / 1000, // cpuminer
-    "shavite3"    => 345464 / 1000, // cpuminer
-    "sib"         => 117647 / 1000, // cpuminer-opt
-    "skein"       => 1012747 / 1000, // cpuminer-opt
-    "skein2"      => 1212549 / 1000, // cpuminer-opt
-    "vanilla"     => 4765128 / 1000, // cpuminer-opt
-    "x11"         => 98091 / 1000, // cpuminer-opt
-    "x13"         => 40000 / 1000, // cpuminer-opt
-    "x14"         => 48550 / 1000, // cpuminer-opt
-    "x15"         => 26315 / 1000, // cpuminer-opt
-    "x17"         => 34482 / 1000, // cpuminer-opt
-    "yescrypt"    => 606 / 1000, // cpuminer-opt
-    "zr5"         => 113644 / 1000, // cpuminer-opt
+    "blake2s"       => 2197848 / 1000, // cpuminer
+    "blakecoin"     => 4674923 / 1000, // cpuminer-opt
+    "bmw"           => 1638154 / 1000, // cpuminer
+    "c11"           =>   83333 / 1000, // cpuminer-opt
+    "cryptolight"   =>      62 / 1000, // cpuminer-opt
+    "cryptonight"   =>      37 / 1000, // cpuminer-opt
+    "decred"        => 3140078 / 1000, // cpuminer-opt
+    "dmd-gr"        =>  333333 / 1000, // cpuminer-opt
+    "drop"          =>  142857 / 1000, // cpuminer-opt
+    "fresh"         =>   74779 / 1000, // cpuminer
+    "groestl"       =>  171317 / 1000, // cpuminer
+    "heavy"         =>   27594 / 1000, // cpuminer
+    "keccak"        => 1264995 / 1000, // cpuminer
+    "luffa"         => 1000000 / 1000, // cpuminer-opt
+    "lyra2"         =>  127302 / 1000, // cpuminer
+    "lyra2v2"       =>   80000 / 1000, // cpuminer-opt
+    "myr-gr"        => 1000000 / 1000, // cpuminer-opt
+    "neoscrypt"     =>    2906 / 1000, // cpuminer-opt
+    "nist5"         =>  333333 / 1000, // cpuminer-opt
+    "pentablake"    =>  546505 / 1000, // cpuminer-opt
+    "pluck"         =>     258 / 1000, // cpuminer-opt
+    "quark"         =>  166666 / 1000, // cpuminer-opt
+    "qubit"         =>  142857 / 1000, // cpuminer-opt
+    "s3"            =>  179324 / 1000, // cpuminer
+    "scrypt"        =>   13992 / 1000, // cpuminer-opt
+    "scryptjane:16" =>      23 / 1000, // cpuminer-opt
+    "sha256d"       => 8152796 / 1000, // cpuminer
+    "shavite3"      =>  345464 / 1000, // cpuminer
+    "sib"           =>  117647 / 1000, // cpuminer-opt
+    "skein"         => 1012747 / 1000, // cpuminer-opt
+    "skein2"        => 1212549 / 1000, // cpuminer-opt
+    "vanilla"       => 4765128 / 1000, // cpuminer-opt
+    "x11"           =>   98091 / 1000, // cpuminer-opt
+    "x13"           =>   40000 / 1000, // cpuminer-opt
+    "x14"           =>   48550 / 1000, // cpuminer-opt
+    "x15"           =>   26315 / 1000, // cpuminer-opt
+    "x17"           =>   34482 / 1000, // cpuminer-opt
+    "yescrypt"      =>     606 / 1000, // cpuminer-opt
+    "zr5"           =>  113644 / 1000, // cpuminer-opt
   ),
   'VPS ramnode $7/mo' => array(
-    "anime"       => 153384 / 1000, // cpuminer-nicehash
-    "argon2"      => 6390 / 1000, // cpuminer-opt
-    "axiom"       => 25 / 1000, // cpuminer-opt
-    "bastion"     => 53898 / 1000, // cpuminer-opt
-    "blake"       => 6491635 / 1000, // cpuminer-nicehash
+    "anime"         =>   153384 / 1000, // cpuminer-nicehash
+    "argon2"        =>     6390 / 1000, // cpuminer-opt
+    "axiom"         =>       25 / 1000, // cpuminer-opt
+    "bastion"       =>    53898 / 1000, // cpuminer-opt
+    "blake"         =>  6491635 / 1000, // cpuminer-nicehash
     "blake256r8vnl" => 10559016 / 1000, // cpuminer-opt
-    "blake2s"     => 4817597 / 1000, // cpuminer-opt
-    "blakecoin"   => 10265849 / 1000, // cpuminer-opt
-    "bmw"         => 3464976 / 1000, // cpuminer-nicehash
-    "c11"         => 169444 / 1000, // cpuminer-opt
-    "cryptolight" => 119 / 1000, // cpuminer-opt
-    "cryptonight" => 87 / 1000, // cpuminer-opt
-    "decred"      => 6164716 / 1000, // cpuminer-opt
-    "dmd-gr"      => 532796 / 1000, // cpuminer-opt
-    "drop"        => 212196 / 1000, // cpuminer-opt
-    "fresh"       => 140783 / 1000, // cpuminer-nicehash
-    "groestl"     => 532546 / 1000, // cpuminer-opt
-    "heavy"       => 60175 / 1000, // cpuminer-nicehash
-    "keccak"      => 2923263 / 1000, // cpuminer-nicehash
-    "luffa"       => 1010604 / 1000, // cpuminer-opt
-    "lyra2"       => 256002 / 1000, // cpuminer-nicehash
-    "lyra2v2"     => 147869 / 1000, // cpuminer-opt
-    "myr-gr"      => 547022 / 1000, // cpuminer-nicehash
-    "neoscrypt"   => 7366 / 1000, // cpuminer-nicehash
-    "nist5"       => 231812 / 1000, // cpuminer-nicehash
-    "pentablake"  => 1111874 / 1000, // cpuminer-opt
-    "pluck"       => 505 / 1000, // cpuminer-nicehash
-    "quark"       => 339877 / 1000, // cpuminer-opt
-    "qubit"       => 174242 / 1000, // cpuminer-opt
-    "s3"          => 337709 / 1000, // cpuminer-opt
-    "scrypt"      => 19445 / 1000, // cpuminer-nicehash
-    "scryptjane:16" => 54 / 1000, // cpuminer-opt
-    "sha256d"     => 10114165 / 1000, // cpuminer-nicehash
-    "shavite3"    => 842228 / 1000, // cpuminer-nicehash
-    "skein"       => 2132173 / 1000, // cpuminer-nicehash
-    "skein2"      => 2610211 / 1000, // cpuminer-nicehash
-    "x11"         => 186654 / 1000, // cpuminer-opt
-    "x11gost"     => 173913 / 1000, // cpuminer-opt
-    "x13"         => 98937 / 1000, // cpuminer-opt
-    "x14"         => 93675 / 1000, // cpuminer-opt
-    "x15"         => 49579 / 1000, // cpuminer-nicehash
-    "x17"         => 43156 / 1000, // cpuminer-opt
-    "yescrypt"    => 1252 / 1000, // cpuminer-opt
-    "zr5"         => 251226 / 1000, // cpuminer-opt
+    "blake2s"       =>  4817597 / 1000, // cpuminer-opt
+    "blakecoin"     => 10265849 / 1000, // cpuminer-opt
+    "bmw"           =>  3464976 / 1000, // cpuminer-nicehash
+    "c11"           =>   169444 / 1000, // cpuminer-opt
+    "cryptolight"   =>      119 / 1000, // cpuminer-opt
+    "cryptonight"   =>       87 / 1000, // cpuminer-opt
+    "decred"        =>  6164716 / 1000, // cpuminer-opt
+    "dmd-gr"        =>   532796 / 1000, // cpuminer-opt
+    "drop"          =>   212196 / 1000, // cpuminer-opt
+    "fresh"         =>   140783 / 1000, // cpuminer-nicehash
+    "groestl"       =>   532546 / 1000, // cpuminer-opt
+    "heavy"         =>    60175 / 1000, // cpuminer-nicehash
+    "keccak"        =>  2923263 / 1000, // cpuminer-nicehash
+    "luffa"         =>  1010604 / 1000, // cpuminer-opt
+    "lyra2"         =>   256002 / 1000, // cpuminer-nicehash
+    "lyra2v2"       =>   147869 / 1000, // cpuminer-opt
+    "myr-gr"        =>   547022 / 1000, // cpuminer-nicehash
+    "neoscrypt"     =>     7366 / 1000, // cpuminer-nicehash
+    "nist5"         =>   231812 / 1000, // cpuminer-nicehash
+    "pentablake"    =>  1111874 / 1000, // cpuminer-opt
+    "pluck"         =>      505 / 1000, // cpuminer-nicehash
+    "quark"         =>   339877 / 1000, // cpuminer-opt
+    "qubit"         =>   174242 / 1000, // cpuminer-opt
+    "s3"            =>   337709 / 1000, // cpuminer-opt
+    "scrypt"        =>    19445 / 1000, // cpuminer-nicehash
+    "scryptjane:16" =>       54 / 1000, // cpuminer-opt
+    "sha256d"       => 10114165 / 1000, // cpuminer-nicehash
+    "shavite3"      =>   842228 / 1000, // cpuminer-nicehash
+    "skein"         =>  2132173 / 1000, // cpuminer-nicehash
+    "skein2"        =>  2610211 / 1000, // cpuminer-nicehash
+    "x11"           =>   186654 / 1000, // cpuminer-opt
+    "x11gost"       =>   173913 / 1000, // cpuminer-opt
+    "x13"           =>    98937 / 1000, // cpuminer-opt
+    "x14"           =>    93675 / 1000, // cpuminer-opt
+    "x15"           =>    49579 / 1000, // cpuminer-nicehash
+    "x17"           =>    43156 / 1000, // cpuminer-opt
+    "yescrypt"      =>     1252 / 1000, // cpuminer-opt
+    "zr5"           =>   251226 / 1000, // cpuminer-opt
   ),
   'VPS linode $10/mo' => array(
-    "anime"       => 94537 / 1000,
-// argon2 did not work on cpuminer
-// axiom did not work on cpuminer
-// bastion did not work on cpuminer
-    "blake"       => 3192984 / 1000,
-// blake256r8vnl did not work on cpuminer
-    "blake2s"     => 2189359 / 1000,
-    "blakecoin"   => 3628968 / 1000,
-    "bmw"         => 1631202 / 1000,
-    "c11"         => 40239 / 1000,
-// cryptolight did not work on cpuminer
-    "cryptonight" => 26 / 1000,
-// decred did not work on cpuminer
-    "dmd-gr"      => 174167 / 1000,
-    "drop"        => 4432 / 1000,
-    "fresh"       => 77550 / 1000,
-    "groestl"     => 173433 / 1000,
-    "heavy"       => 28473 / 1000,
-// hodl did not work on cpuminer
-    "keccak"      => 1309418 / 1000,
-    "luffa"       => 481601 / 1000,
-    "lyra2"       => 135088 / 1000,
-// lyra2v2 did not work on cpuminer
-    "myr-gr"      => 283197 / 1000,
-    "neoscrypt"   => 2452 / 1000,
-    "nist5"       => 150047 / 1000,
-    "pentablake"  => 468664 / 1000,
-    "pluck"       => 262 / 1000,
-    "quark"       => 95524 / 1000,
-    "qubit"       => 68207 / 1000,
-    "s3"          => 183866 / 1000,
-    "scrypt"      => 13594 / 1000,
-    "scryptjane:16" => 27 / 1000,
-    "sha256d"     => 8220482 / 1000,
-    "shavite3"    => 369248 / 1000,
-// sib did not work on cpuminer
-    "skein"       => 1025967 / 1000,
-    "skein2"      => 1257095 / 1000,
-// vanilla did not work on cpuminer
-    "x11"         => 40007 / 1000,
-// x11gost did not work on cpuminer
-    "x13"         => 25783 / 1000,
-    "x14"         => 24059 / 1000,
-    "x15"         => 23502 / 1000,
-// x17 did not work on cpuminer
-// yescrypt did not work on cpuminer
-    "zr5"         => 68563 / 1000,
-// anime did not work on cpuminer-opt
-    "argon2"      => 3405 / 1000,
-    "axiom"       => 11 / 1000,
-    "bastion"     => 35087 / 1000,
-    "blake"       => 3163430 / 1000,
-    "blake256r8vnl" => 4716686 / 1000,
-    "blake2s"     => 2148395 / 1000,
-    "blakecoin"   => 4664608 / 1000,
-// bmw did not work on cpuminer-opt
-    "c11"         => 133333 / 1000,
-    "cryptolight" => 56 / 1000,
-    "cryptonight" => 32 / 1000,
-    "decred"      => 3227778 / 1000,
-    "dmd-gr"      => 285714 / 1000,
-    "drop"        => 285714 / 1000,
-    "fresh"       => 43478 / 1000,
-    "groestl"     => 173546 / 1000,
-// heavy did not work on cpuminer-opt
-    "hodl"        => 3 / 1000,
-    "keccak"      => 1000000 / 1000,
-    "luffa"       => 666666 / 1000,
-    "lyra2"       => 125983 / 1000,
-    "lyra2v2"     => 77146 / 1000,
-    "myr-gr"      => 666666 / 1000,
-    "neoscrypt"   => 2904 / 1000,
-    "nist5"       => 250000 / 1000,
-    "pentablake"  => 548219 / 1000,
-    "pluck"       => 261 / 1000,
-    "quark"       => 142857 / 1000,
-    "qubit"       => 111111 / 1000,
-    "s3"          => 55555 / 1000,
-    "scrypt"      => 13454 / 1000,
-    "scryptjane:16" => 28 / 1000,
-    "sha256d"     => 2000000 / 1000,
-    "shavite3"    => 333333 / 1000,
-    "sib"         => 111111 / 1000,
-    "skein"       => 1024084 / 1000,
-    "skein2"      => 1236989 / 1000,
-    "vanilla"     => 4693043 / 1000,
-    "x11"         => 99708 / 1000,
-    "x11gost"     => 100000 / 1000,
-    "x13"         => 27777 / 1000,
-    "x14"         => 43854 / 1000,
-    "x15"         => 25000 / 1000,
-    "x17"         => 32258 / 1000,
-    "yescrypt"    => 597 / 1000,
-    "zr5"         => 113239 / 1000,
+    "anime"         =>   94537 / 1000, // cpuminer-nicehash
+    "argon2"        =>    3405 / 1000, // cpuminer-opt
+    "axiom"         =>      11 / 1000, // cpuminer-opt
+    "bastion"       =>   35087 / 1000, // cpuminer-opt
+    "blake"         => 3192984 / 1000, // cpuminer-nicehash
+    "blake256r8vnl" => 4716686 / 1000, // cpuminer-opt
+    "blake2s"       => 2189359 / 1000, // cpuminer-nicehash
+    "blakecoin"     => 4664608 / 1000, // cpuminer-opt
+    "bmw"           => 1631202 / 1000, // cpuminer-nicehash
+    "c11"           =>  133333 / 1000, // cpuminer-opt
+    "cryptolight"   =>      56 / 1000, // cpuminer-opt
+    "cryptonight"   =>      32 / 1000, // cpuminer-opt
+    "decred"        => 3227778 / 1000, // cpuminer-opt
+    "dmd-gr"        =>  285714 / 1000, // cpuminer-opt
+    "drop"          =>  285714 / 1000, // cpuminer-opt
+    "fresh"         =>   77550 / 1000, // cpuminer-nicehash
+    "groestl"       =>  173546 / 1000, // cpuminer-opt
+    "heavy"         =>   28473 / 1000, // cpuminer-nicehash
+    "hodl"          =>       3 / 1000, // cpuminer-opt
+    "keccak"        => 1309418 / 1000, // cpuminer-nicehash
+    "luffa"         =>  666666 / 1000, // cpuminer-opt
+    "lyra2"         =>  135088 / 1000, // cpuminer-nicehash
+    "lyra2v2"       =>   77146 / 1000, // cpuminer-opt
+    "myr-gr"        =>  666666 / 1000, // cpuminer-opt
+    "neoscrypt"     =>    2904 / 1000, // cpuminer-opt
+    "nist5"         =>  250000 / 1000, // cpuminer-opt
+    "pentablake"    =>  548219 / 1000, // cpuminer-opt
+    "pluck"         =>     262 / 1000, // cpuminer-nicehash
+    "quark"         =>  142857 / 1000, // cpuminer-opt
+    "qubit"         =>  111111 / 1000, // cpuminer-opt
+    "s3"            =>  183866 / 1000, // cpuminer-nicehash
+    "scrypt"        =>   13594 / 1000, // cpuminer-nicehash
+    "scryptjane:16" =>      28 / 1000, // cpuminer-opt
+    "sha256d"       => 8220482 / 1000, // cpuminer-nicehash
+    "shavite3"      =>  369248 / 1000, // cpuminer-nicehash
+    "sib"           =>  111111 / 1000, // cpuminer-opt
+    "skein"         => 1025967 / 1000, // cpuminer-nicehash
+    "skein2"        => 1257095 / 1000, // cpuminer-nicehash
+    "vanilla"       => 4693043 / 1000, // cpuminer-opt
+    "x11"           =>   99708 / 1000, // cpuminer-opt
+    "x13"           =>   27777 / 1000, // cpuminer-opt
+    "x14"           =>   43854 / 1000, // cpuminer-opt
+    "x15"           =>   25000 / 1000, // cpuminer-opt
+    "x17"           =>   32258 / 1000, // cpuminer-opt
+    "yescrypt"      =>     597 / 1000, // cpuminer-opt
+    "zr5"           =>  113239 / 1000, // cpuminer-opt
   ),
 );
 
