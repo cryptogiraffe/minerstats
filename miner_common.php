@@ -353,7 +353,13 @@ $mph_data =       url_to_array_cached("https://miningpoolhub.com/index.php?page=
 $yiimp_data = str_replace(": ,", ": 0,", $yiimp_data);
 
 $profit = array();
-foreach ($gfxcards as $card => $rates) {$profit[$card] = array();}
+foreach ($gfxcards as $card => $rates) {
+    $profit[$card] = array();
+    foreach ($rates as $algo => $hashrate) {
+        $algo = fix_hashname($algo);
+        $gfxcards[$card][$algo] = $hashrate;
+    }
+}
 
 function deduct_fee(&$value, $fee) {
     if (!isset($fee)) return;
