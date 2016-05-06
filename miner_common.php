@@ -195,51 +195,99 @@ $gfxcards = array(
     "lyra2" => 678,
     "scrypt-jane" => 0.131,
   ),
-  /*
-  'VPS AWS t2.micro' => array(
-    "lyra2"       =>  13.95,
-    "scrypt-jane" =>   2.130 / 1000,
-  ),
-  'VPS scaleway $3/mo' => array(
-    "lyra2"       =>  92.58,
-  ),
   'VPS vultr $5/mo' => array(
-    "anime"         => 98780 / 1000,
-    "blake"         => 2962196 / 1000,
-    "blake2s"       => 2247789 / 1000,
-    "blakecoin"     => 4802667 / 1000,
-    "bmw"           => 1671996 / 1000,
-    "c11"           => 43913 / 1000,
-    "cryptonight"   => 30 / 1000,
-    "dmd-gr"        => 178548 / 1000,
-    "drop"          => 4629 / 1000,
-    "fresh"         => 80152 / 1000,
-    "groestl"       => 179438 / 1000,
-    "heavy"         => 29191 / 1000,
-    "keccak"        => 1337969 / 1000,
-    "luffa"         => 500518 / 1000,
-    "lyra2"         => 140094 / 1000,
-    "myr-gr"        => 292040 / 1000,
-    "neoscrypt"     => 2962 / 1000,
-    "nist5"         => 158367 / 1000,
-    "pentablake"    => 558395 / 1000,
-    "pluck"         => 267 / 1000,
-    "quark"         => 98521 / 1000,
-    "qubit"         => 70516 / 1000,
-    "s3"            => 191845 / 1000,
-    "scrypt"        => 14367 / 1000,
-    "scryptjane:16" => 27 / 1000,
-    "sha256d"       => 8373836 / 1000,
-    "shavite3"      => 379739 / 1000,
-    "skein"         => 1038268 / 1000,
-    "skein2"        => 1204514 / 1000,
-    "x11"           => 43358 / 1000,
-    "x13"           => 28671 / 1000,
-    "x14"           => 27621 / 1000,
-    "x15"           => 26121 / 1000,
-    "zr5"           => 70582 / 1000,
+    "anime"       => 92164 / 1000, // cpuminer
+    "argon2"      => 3413 / 1000, // cpuminer-opt
+    "axiom"       => 10 / 1000, // cpuminer-opt
+    "bastion"     => 29850 / 1000, // cpuminer-opt
+    "blake"       => 3214558 / 1000, // cpuminer
+    "blake256r8vnl" => 4246587 / 1000, // cpuminer-opt
+    "blake2s"     => 2197848 / 1000, // cpuminer
+    "blakecoin"   => 4674923 / 1000, // cpuminer-opt
+    "bmw"         => 1638154 / 1000, // cpuminer
+    "c11"         => 83333 / 1000, // cpuminer-opt
+    "cryptolight" => 62 / 1000, // cpuminer-opt
+    "cryptonight" => 37 / 1000, // cpuminer-opt
+    "decred"      => 3140078 / 1000, // cpuminer-opt
+    "dmd-gr"      => 333333 / 1000, // cpuminer-opt
+    "drop"        => 142857 / 1000, // cpuminer-opt
+    "fresh"       => 74779 / 1000, // cpuminer
+    "groestl"     => 171317 / 1000, // cpuminer
+    "heavy"       => 27594 / 1000, // cpuminer
+    "keccak"      => 1264995 / 1000, // cpuminer
+    "luffa"       => 1000000 / 1000, // cpuminer-opt
+    "lyra2"       => 127302 / 1000, // cpuminer
+    "lyra2v2"     => 80000 / 1000, // cpuminer-opt
+    "myr-gr"      => 1000000 / 1000, // cpuminer-opt
+    "neoscrypt"   => 2906 / 1000, // cpuminer-opt
+    "nist5"       => 333333 / 1000, // cpuminer-opt
+    "pentablake"  => 546505 / 1000, // cpuminer-opt
+    "pluck"       => 258 / 1000, // cpuminer-opt
+    "quark"       => 166666 / 1000, // cpuminer-opt
+    "qubit"       => 142857 / 1000, // cpuminer-opt
+    "s3"          => 179324 / 1000, // cpuminer
+    "scrypt"      => 13992 / 1000, // cpuminer-opt
+    "scryptjane:16" => 23 / 1000, // cpuminer-opt
+    "sha256d"     => 8152796 / 1000, // cpuminer
+    "shavite3"    => 345464 / 1000, // cpuminer
+    "sib"         => 117647 / 1000, // cpuminer-opt
+    "skein"       => 1012747 / 1000, // cpuminer-opt
+    "skein2"      => 1212549 / 1000, // cpuminer-opt
+    "vanilla"     => 4765128 / 1000, // cpuminer-opt
+    "x11"         => 98091 / 1000, // cpuminer-opt
+    "x13"         => 40000 / 1000, // cpuminer-opt
+    "x14"         => 48550 / 1000, // cpuminer-opt
+    "x15"         => 26315 / 1000, // cpuminer-opt
+    "x17"         => 34482 / 1000, // cpuminer-opt
+    "yescrypt"    => 606 / 1000, // cpuminer-opt
+    "zr5"         => 113644 / 1000, // cpuminer-opt
   ),
-  */
+  'VPS ramnode $7/mo' => array(
+    "anime"       => 153384 / 1000, // cpuminer-nicehash
+    "argon2"      => 6390 / 1000, // cpuminer-opt
+    "axiom"       => 25 / 1000, // cpuminer-opt
+    "bastion"     => 53898 / 1000, // cpuminer-opt
+    "blake"       => 6491635 / 1000, // cpuminer-nicehash
+    "blake256r8vnl" => 10559016 / 1000, // cpuminer-opt
+    "blake2s"     => 4817597 / 1000, // cpuminer-opt
+    "blakecoin"   => 10265849 / 1000, // cpuminer-opt
+    "bmw"         => 3464976 / 1000, // cpuminer-nicehash
+    "c11"         => 169444 / 1000, // cpuminer-opt
+    "cryptolight" => 119 / 1000, // cpuminer-opt
+    "cryptonight" => 87 / 1000, // cpuminer-opt
+    "decred"      => 6164716 / 1000, // cpuminer-opt
+    "dmd-gr"      => 532796 / 1000, // cpuminer-opt
+    "drop"        => 212196 / 1000, // cpuminer-opt
+    "fresh"       => 140783 / 1000, // cpuminer-nicehash
+    "groestl"     => 532546 / 1000, // cpuminer-opt
+    "heavy"       => 60175 / 1000, // cpuminer-nicehash
+    "keccak"      => 2923263 / 1000, // cpuminer-nicehash
+    "luffa"       => 1010604 / 1000, // cpuminer-opt
+    "lyra2"       => 256002 / 1000, // cpuminer-nicehash
+    "lyra2v2"     => 147869 / 1000, // cpuminer-opt
+    "myr-gr"      => 547022 / 1000, // cpuminer-nicehash
+    "neoscrypt"   => 7366 / 1000, // cpuminer-nicehash
+    "nist5"       => 231812 / 1000, // cpuminer-nicehash
+    "pentablake"  => 1111874 / 1000, // cpuminer-opt
+    "pluck"       => 505 / 1000, // cpuminer-nicehash
+    "quark"       => 339877 / 1000, // cpuminer-opt
+    "qubit"       => 174242 / 1000, // cpuminer-opt
+    "s3"          => 337709 / 1000, // cpuminer-opt
+    "scrypt"      => 19445 / 1000, // cpuminer-nicehash
+    "scryptjane:16" => 54 / 1000, // cpuminer-opt
+    "sha256d"     => 10114165 / 1000, // cpuminer-nicehash
+    "shavite3"    => 842228 / 1000, // cpuminer-nicehash
+    "skein"       => 2132173 / 1000, // cpuminer-nicehash
+    "skein2"      => 2610211 / 1000, // cpuminer-nicehash
+    "x11"         => 186654 / 1000, // cpuminer-opt
+    "x11gost"     => 173913 / 1000, // cpuminer-opt
+    "x13"         => 98937 / 1000, // cpuminer-opt
+    "x14"         => 93675 / 1000, // cpuminer-opt
+    "x15"         => 49579 / 1000, // cpuminer-nicehash
+    "x17"         => 43156 / 1000, // cpuminer-opt
+    "yescrypt"    => 1252 / 1000, // cpuminer-opt
+    "zr5"         => 251226 / 1000, // cpuminer-opt
+  ),
 );
 
 $memcache = new Memcached;
@@ -259,6 +307,7 @@ function fix_hashname($algo) {
     if ($algo == "blake-vanilla")  $algo = "vanilla";
     if ($algo == "ethash")         $algo = "ethereum";
     if ($algo == "sha256d")        $algo = "sha256";
+    if ($algo == "x11gost")        $algo = "sib";
     return $algo;
 }
 
