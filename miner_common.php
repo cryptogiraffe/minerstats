@@ -397,6 +397,7 @@ function handle_algo($pool_name, $algo, $payrate_current, $fee, $payrate_current
         switch ($algo) {
         case 'blakecoin':
         case 'decred':
+        case 'blake2s':
             $mbtcmhday_current /= 1000;
             $mbtcmhday_last24h /= 1000;
             break;
@@ -405,6 +406,7 @@ function handle_algo($pool_name, $algo, $payrate_current, $fee, $payrate_current
     if ($pool_name == "yiimp") {
         switch ($algo) {
             case 'decred':
+            case 'blakecoin';
             case 'blake';
             case 'blake2s':
             case 'skein':
