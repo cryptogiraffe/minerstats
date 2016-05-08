@@ -538,6 +538,7 @@ function fix_hashname($algo) {
     if ($algo == "lyra2rev2")      $algo = "lyra2v2";
     if ($algo == "scryptjanenf16") $algo = "scrypt-jane";
     if ($algo == "scrypt-jane:16") $algo = "scrypt-jane";
+    if ($algo == "scryptjane:16")  $algo = "scrypt-jane";
     if ($algo == "blake256r8")     $algo = "blakecoin";
     if ($algo == "blake256r14")    $algo = "blake";
     if ($algo == "blake256r8vnl")  $algo = "vanilla";
