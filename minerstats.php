@@ -75,10 +75,10 @@ foreach ($profit as $card => $entries) {
     print_th_right("Algo");
     print_th("Pool");
     // print_th_right("m฿/day", 'hidden-xs-down');
-    print_th_right("$ now");
-    print_th("$ last24h");
+    print_th_right("now");
+    print_th("24h");
     print_th_right('payrate', 'hidden-xs-down');
-    print_th('payrateavg', 'hidden-xs-down');
+    print_th('~payrate', 'hidden-xs-down');
     print_th_right("MH/s", 'hidden-xs-down');
     print '</tr></thead>';
     print '<tbody>';
@@ -95,11 +95,11 @@ foreach ($profit as $card => $entries) {
         print '<tr>';
         print_td_right($algo);
         print_td($entry['pool']);
-        print_td_right(sprintf('%.2f', $usdrate_current));
+        print_td_right(sprintf('%.2f$', $usdrate_current));
         if ($usdrate_last24h == 0) {
             print_td("-");
         } else {
-            print_td(sprintf('%.2f', $usdrate_last24h));
+            print_td(sprintf('$%.2f', $usdrate_last24h));
         }
         // payrate
         print_td_right(sprintf('%.4f', $mbtcmhday_current), 'hidden-xs-down');
