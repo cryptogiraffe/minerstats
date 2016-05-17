@@ -97,6 +97,7 @@ $gfxcards = array(
     "x13"       => 3000, // sgminer-5-3-0-general
     "x15"       => 1320, // sgminer-5-3-0-general
   ),
+  /*
   'GPU 6970' => array(
     "x11"       => 2000,
     "x13" => 1600,
@@ -109,10 +110,12 @@ $gfxcards = array(
     "blake256r8" => 1443700,
     "blake256r8vnl" => 1432700,
   ),
-
+  */
   /********
    * CPU's
    ********/
+
+  /*
   'CPU i7 4770' => array(
     "argon2"      =>  26.67,
     "axiom"       =>   0.386,
@@ -138,6 +141,7 @@ $gfxcards = array(
     "x15"         => 152.57,
     "yescrypt"    =>   1.61,
   ),
+  */
   'CPU i7 4770 OC' => array( // 104x39 -- 4056MHz vs stock 3900MHz
     "anime"         =>     616426 / 1000, // cpuminer-nicehash
     "argon2"        =>      31073 / 1000, // cpuminer-opt
@@ -196,16 +200,19 @@ $gfxcards = array(
     "lyra2"       => 762.590,
     "scrypt-jane" =>   0.299,
   ),
+  /*
   'CPU X4 965' => array(
     "axiom"       =>   0.059,
     "lyra2"       => 397.56,
     "scrypt-jane" =>   0.056,
   ),
+  */
   'CPU i5 4690k' => array(
     "axiom" => 0.275,
     "lyra2" => 678,
     "scrypt-jane" => 0.131,
   ),
+  /*
   'CPU i5 4570S' => array(
     "anime"         =>     432956 / 1000, // cpuminer
     "argon2"        =>      16415 / 1000, // cpuminer-opt
@@ -254,6 +261,13 @@ $gfxcards = array(
     "yescrypt"      =>       2434 / 1000, // cpuminer-opt
     "zr5"           =>     493225 / 1000, // cpuminer-opt
   ),
+  */
+
+  /******
+   * VPS
+   ******/
+
+  /*
   'VPS scaleway $3/mo' => array(
     "anime"         =>   36858 / 1000, // cpuminer-nicehash
     "argon2"        =>    1554 / 1000, // cpuminer-opt
@@ -395,6 +409,7 @@ $gfxcards = array(
     "yescrypt"      =>        481 / 1000, // cpuminer-opt
     "zr5"           =>      94906 / 1000, // cpuminer-opt
   ),
+  */
   'VPS vultr $5/mo' => array(
     "anime"         =>   92164 / 1000, // cpuminer
     "argon2"        =>    3413 / 1000, // cpuminer-opt
@@ -442,6 +457,7 @@ $gfxcards = array(
     "yescrypt"      =>     606 / 1000, // cpuminer-opt
     "zr5"           =>  113644 / 1000, // cpuminer-opt
   ),
+  /*
   'VPS ramnode $7/mo' => array(
     "anime"         =>   153384 / 1000, // cpuminer-nicehash
     "argon2"        =>     6390 / 1000, // cpuminer-opt
@@ -536,6 +552,7 @@ $gfxcards = array(
     "yescrypt"      =>     597 / 1000, // cpuminer-opt
     "zr5"           =>  113239 / 1000, // cpuminer-opt
   ),
+  */
 );
 
 $memcache = new Memcached;
