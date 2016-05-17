@@ -57,9 +57,9 @@ $gfxcards = array(
     "whirlpoolx"  =>  440.40 * 1000, // ccminer_neoscrypt
     "x11"         =>   18.00 * 1000, // ccminer_neoscrypt -i 21
     "x13"         =>   14.23 * 1000, // ccminer_neoscrypt
-    "x14"         =>   12.71 * 1000, // ccminer_tpruvot_1.7.5-git.x64 -i 21 // neoscrypt and sp -- crash
+    "x14"         =>   13.69 * 1000, // ccminer_sp_1.5.80 -i 21
     "x15"         =>   12.35 * 1000, // ccminer_neoscrypt
-    "x17"         =>   10.83 * 1000, // ccminer_tpruvot_1.7.5-git.x64 // neoscrypt and sp -- crash
+    "x17"         =>   11.33 * 1000, // ccminer_sp_1.5.80
     "zr5"         => 6646.00,        // ccminer_tpruvot_1.7.5-git.x64 -i 26
   ),
   'GPU 980Ti' => array(
