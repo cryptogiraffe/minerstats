@@ -8,6 +8,7 @@ $gfxcards = array(
     "blakecoin"   => 5852.44 * 1000, // ccminer_tpruvot_1.7.5-git.x64
     "c11"         =>   18.02 * 1000, // ccminer_sp_1.5.80
     "decred"      => 3572.00 * 1000, // ccminer_alexis.x64 -i 27
+    "ethereum"    =>   37.00 * 1000, // from the web
     "fresh"       =>   20.55 * 1000, // ccminer_neoscrypt -i 21
     "groestl"     =>   51.83 * 1000, // ccminer_sp_1.5.79
     "keccak"      => 1028.50 * 1000, // ccminer_neoscrypt -i 25
