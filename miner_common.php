@@ -100,6 +100,50 @@ $gfxcards = array(
     "zr5"           =>     796181 / 1000, // cpuminer-opt
   ),
 
+  'CPU AMD X4 965' => array(
+    "anime"         =>     294659 / 1000, // cpuminer-nicehash
+    "axiom"         =>         60 / 1000, // cpuminer-nicehash
+    "bastion"       =>      81292 / 1000, // cpuminer-tpruvot
+    "blake"         =>   12373053 / 1000, // cpuminer-tpruvot
+    "blake2s"       =>   10176512 / 1000, // cpuminer-tpruvot
+    "blakecoin"     =>   17823249 / 1000, // cpuminer-tpruvot
+    "bmw"           =>    6939021 / 1000, // cpuminer-tpruvot
+    "c11"           =>     136931 / 1000, // cpuminer-tpruvot
+    "cryptolight"   =>        200 / 1000, // cpuminer-tpruvot
+    "cryptonight"   =>         78 / 1000, // cpuminer-nicehash
+    "dmd-gr"        =>     622588 / 1000, // cpuminer-nicehash
+    "drop"          =>      14840 / 1000, // cpuminer-tpruvot
+    "fresh"         =>     289222 / 1000, // cpuminer-tpruvot
+    "groestl"       =>     744034 / 1000, // cpuminer-tpruvot
+    "heavy"         =>     117913 / 1000, // cpuminer-tpruvot
+    "keccak"        =>    5739619 / 1000, // cpuminer-tpruvot
+    "luffa"         =>    2036097 / 1000, // cpuminer-tpruvot
+    "lyra2"         =>     569857 / 1000, // cpuminer-nicehash
+    "lyra2v2"       =>     297717 / 1000, // cpuminer-tpruvot
+    "myr-gr"        =>    1110975 / 1000, // cpuminer-tpruvot
+    "neoscrypt"     =>       7695 / 1000, // cpuminer-tpruvot
+    "nist5"         =>     457649 / 1000, // cpuminer-tpruvot
+    "pentablake"    =>    2269069 / 1000, // cpuminer-tpruvot
+    "pluck"         =>        771 / 1000, // cpuminer-tpruvot
+    "quark"         =>     300191 / 1000, // cpuminer-tpruvot
+    "qubit"         =>     201333 / 1000, // cpuminer-tpruvot
+    "s3"            =>     734153 / 1000, // cpuminer-nicehash
+    "scrypt"        =>      26016 / 1000, // cpuminer-nicehash
+    "scryptjane:16" =>         60 / 1000, // cpuminer-nicehash
+    "sha256d"       =>   15359887 / 1000, // cpuminer-nicehash
+    "shavite3"      =>    1543093 / 1000, // cpuminer-nicehash
+    "sib"           =>     104523 / 1000, // cpuminer-tpruvot
+    "skein"         =>    3986457 / 1000, // cpuminer-nicehash
+    "skein2"        =>    5943154 / 1000, // cpuminer-nicehash
+    "vanilla"       =>   16486704 / 1000, // cpuminer-tpruvot
+    "x11"           =>     137468 / 1000, // cpuminer-nicehash
+    "x13"           =>      96448 / 1000, // cpuminer-nicehash
+    "x14"           =>      92861 / 1000, // cpuminer-nicehash
+    "x15"           =>      90863 / 1000, // cpuminer-tpruvot
+    "yescrypt"      =>       1790 / 1000, // cpuminer-tpruvot
+    "zr5"           =>     228101 / 1000, // cpuminer-tpruvot
+  ),
+
   /******
    * VPS
    ******/
