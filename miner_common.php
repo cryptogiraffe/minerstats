@@ -229,38 +229,57 @@ function get_hashrate($card, $algo) {
     return $gfxcards[$card][$algo];
 }
 
+function fetch_url($url) {
+    $handle = curl_init();
+
+    curl_setopt($handle, CURLOPT_URL, $url);
+    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($handle, CURLOPT_CONNECTTIMEOUT, 10);
+
+    $response  = curl_exec($handle);
+    $http_code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+    $errno     = curl_errno($handle);
+    curl_close($handle);
+    if (!$errno) return $response;
+    return NULL;
+}
+
 function url_cached($url, $id) {
     global $memcache;
     $data = $memcache->get($id);
     if ($data) return $data;
 
-    $data = file_get_contents($url);
+    $data = fetch_url($url);
     if ($data) $memcache->set($id, $data, 60);
-    else trigger_error("Couldn't get $url", E_USER_WARNING);
+    //else trigger_error("Couldn't get $url", E_USER_WARNING);
     return $data;
 }
 
 function url_to_array_cached($url, $id) {
     $json = url_cached($url, $id);
+    if (!$json) return NULL;
     $data = json_decode($json, TRUE);
-    if (!$data) trigger_error("Couldn't decode json from $url", E_USER_WARNING);
+    if (!$data) return NULL;
+    //if (!$data) trigger_error("Couldn't decode json from $url", E_USER_WARNING);
     return $data;
 }
 
 $zpool_data     = url_to_array_cached("http://www.zpool.ca/api/status", "zpool_data");
 $hashpower_data = url_to_array_cached("http://hashpower.co/api/status", "hashpower_data");
 $yiimp_data     = url_to_array_cached("http://yiimp.ccminer.org/api/status", "yiimp_data");
-$nicehash_data  = url_to_array_cached("https://www.nicehash.com/api?method=simplemultialgo.info", "nicehash_data")['result']['simplemultialgo'];
+$nicehash_data  = url_to_array_cached("https://www.nicehash.com/api?method=simplemultialgo.info", "nicehash_data");
 $usd_data       = url_to_array_cached("https://www.bitstamp.net/api/ticker/", "usd_data");
 //$dashminer_data = url_to_array_cached("http://dashminer.com/payouts.json", "dashminer_data");
 //$wepaybtc_data  = url_to_array_cached("http://wepaybtc.com/payouts.json", "wepaybtc_data");
-$mph_data =       url_to_array_cached("https://miningpoolhub.com/index.php?page=api&action=getautoswitchingandprofitsstatistics", "mph_data")['return'];
+$mph_data =       url_to_array_cached("https://miningpoolhub.com/index.php?page=api&action=getautoswitchingandprofitsstatistics", "mph_data");
 
 //$themultipool_x11_data    = url_cached("http://themultipool.com/static/x11_profit.txt",    "themultipool_x11_data");
 //$themultipool_scrypt_data = url_cached("http://themultipool.com/static/scrypt_profit.txt", "themultipool_scrypt_data");
 //$themultipool_sha256_data = url_cached("http://themultipool.com/static/sha256_profit.txt", "themultipool_sha256_data");
 
-$yiimp_data = str_replace(": ,", ": 0,", $yiimp_data);
+if ($yiimp_data)    $yiimp_data    = str_replace(": ,", ": 0,", $yiimp_data);
+if ($nicehash_data) $nicehash_data = $nicehash_data['result']['simplemultialgo'];
+if ($mph_data)      $mph_data      = $mph_data['return'];
 
 $profit = array();
 foreach ($gfxcards as $card => $rates) {
@@ -271,6 +290,8 @@ foreach ($gfxcards as $card => $rates) {
     }
 }
 
+if (!isset($usd_data) || !$usd_data) trigger_error("usd_data is not set!");
+
 function deduct_fee(&$value, $fee) {
     if (!isset($fee)) return;
     $fees = ($value / 100) * $fee;
@@ -279,6 +300,8 @@ function deduct_fee(&$value, $fee) {
 
 function handle_pool($pool_name, $extra_fee, $algo_name, $payrate_current_name, $payrate_current_multiplier, $payrate_last24h_name, $payrate_last24h_multiplier) {
     global ${"$pool_name" . "_data"};
+    if (!isset(${"$pool_name" . "_data"})) return;
+    if (!${"$pool_name" . "_data"}) return;
     foreach (${"$pool_name" . "_data"} as $algo => $entry) {
         $payrate_last24h = 0;
         if (!is_string($algo)) $algo = $entry[$algo_name];
