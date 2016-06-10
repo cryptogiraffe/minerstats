@@ -236,7 +236,8 @@ function fetch_url($url) {
 
     curl_setopt($handle, CURLOPT_URL, $url);
     curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($handle, CURLOPT_CONNECTTIMEOUT, 10);
+    curl_setopt($handle, CURLOPT_CONNECTTIMEOUT, 30);
+    curl_setopt($handle, CURLOPT_TIMEOUT, 30);
 
     $response  = curl_exec($handle);
     $http_code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
