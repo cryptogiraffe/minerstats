@@ -12,6 +12,30 @@ require 'miner_common.php';
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>pool profitability</title>
 
+    <script>
+// Short-circuiting, and saving a parse operation
+function isFloat(value) {
+  var x;
+  if (isNaN(value)) {
+    return false;
+  }
+  x = parseFloat(value);
+  return x == value;
+}
+
+function priceSorter(a ,b) {
+    a = a.replace('$', '');
+    b = b.replace('$', '');
+    if (isFloat(a) && isFloat(b)) {
+        a = parseFloat(a);
+        b = parseFloat(b);
+    }
+    if (a > b) return 1;
+    if (a < b) return -1;
+    return 0;
+}
+</script>
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.css" crossorigin="anonymous">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.css">
@@ -56,8 +80,8 @@ foreach ($profit as $card => $entries) {
 print "</ul>";
 
 function to_id($text) { return str_replace("/", "_", $text);}
-function print_th($text, $extraclass='') {print "<th class='$extraclass' data-field='". to_id($text) ."' data-sortable='true'>$text</th>\n";}
-function print_th_right($text, $extraclass='') {print "<th class='text-xs-right $extraclass' data-field='". to_id($text) ."' data-sortable='true'>$text</th>\n";}
+function print_th($text, $extraclass='') {print "<th class='$extraclass' data-field='". to_id($text) ."' data-sortable='true' data-sorter='priceSorter'>$text</th>\n";}
+function print_th_right($text, $extraclass='') {print "<th class='text-xs-right $extraclass' data-field='". to_id($text) ."' data-sortable='true' data-sorter='priceSorter'>$text</th>\n";}
 function print_td($text, $extraclass='') {print "<td class='$extraclass'>$text</td>\n";}
 function print_td_right($text, $extraclass='') {print "<td class='text-xs-right $extraclass'>$text</td>\n";}
 
