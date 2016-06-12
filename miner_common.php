@@ -268,7 +268,6 @@ function url_to_array_cached($url, $id) {
 }
 
 $zpool_data     = url_to_array_cached("http://www.zpool.ca/api/status", "zpool_data");
-$hashpower_data = url_to_array_cached("http://hashpower.co/api/status", "hashpower_data");
 $yiimp_data     = url_to_array_cached("http://yiimp.ccminer.org/api/status", "yiimp_data");
 $nicehash_data  = url_to_array_cached("https://www.nicehash.com/api?method=simplemultialgo.info", "nicehash_data");
 $usd_data       = url_to_array_cached("https://www.bitstamp.net/api/ticker/", "usd_data");
@@ -371,7 +370,6 @@ function handle_algo($pool_name, $algo, $payrate_current, $fee, $payrate_current
 }
 
 handle_pool("zpool",     0, '', 'estimate_current', 1000, 'actual_last24h', 1);
-handle_pool("hashpower", 2, '', 'estimate_current', 1000, 'actual_last24h', 1000);
 handle_pool("yiimp",     0, '', 'estimate_current', 1000, 'estimate_last24h', 1000);
 handle_pool("nicehash",  3, 'name', 'paying', 1,    NULL, 1);
 //handle_pool("wepaybtc",  0, 'name', 'paying', 1000, NULL, 1);

@@ -49,7 +49,6 @@ function printer($name) {
 }
 // printer("zpool");
 // printer("nicehash");
-// printer("hashpower");
 // printer("mph");
 // printer("usd");
 // printer("dashminer");
