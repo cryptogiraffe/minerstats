@@ -231,7 +231,17 @@ function get_hashrate($card, $algo) {
     return $gfxcards[$card][$algo];
 }
 
+function is_run_manually() {
+    if (php_sapi_name() == 'cli' && isset($_SERVER['TERM'])) {
+        return true;
+    }
+    return false;
+}
+
 function fetch_url($url) {
+    if (is_run_manually()) {
+        print "curl'ing $url...\n";
+    }
     $handle = curl_init();
 
     curl_setopt($handle, CURLOPT_URL, $url);
@@ -248,6 +258,9 @@ function fetch_url($url) {
 }
 
 function url_cached($url, $id) {
+    if (is_run_manually()) {
+        print "Getting $url...\n";
+    }
     global $memcache;
     $data = $memcache->get($id);
     if ($data) return $data;
